@@ -85,27 +85,6 @@ html, body {
   cursor: pointer;
 }
 
-/* #closeBtnImg{
-  position: absolute;
-  width: 100%;
-  height: 27px;
-  top: 0px;
-  right: 0px;
-  background: url(../images/10.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-#closeBtnText{
-  position: absolute;
-  bottom: -10px;
-  left: 3px;
-  font-family: Arial;
-  font-size: 11px;
-  font-weight: 600;
-  color: #ccc;
-} */
-
 #closeBtn:hover {
   position: absolute;
   width: 34px;
@@ -122,13 +101,9 @@ html, body {
   position: absolute;
   width: 100%;
   height: 30px;
-  /* background: url(../images/3.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%; */
   left: 0;
   top: 40px;
   z-index: 100;
-  /* box-shadow: 0 8px 6px -7px #939191; */
 }
 
 #contentTittle {
@@ -203,8 +178,8 @@ html, body {
 
 .contentContainer {
   position: absolute;
-  width: 71%;
-  height: 110px;
+  width: 73%;
+  height: 160px;
   bottom: 0px;
   left: 0px;
 }
@@ -212,150 +187,13 @@ html, body {
 .contentDiv {
   position: absolute;
   width: 100%;
-  height: 119px;
+  height: 180px;
   top: 0px;
-  left: 0px;
+  left: -1px;
   border-bottom-left-radius: 28px;
   background: url(../images/content.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-}
-
-.timerDiv {
-  position: absolute;
-  width: 120px;
-  height: 69px;
-  bottom: 111px;
-  left: 502px;
-  background: url(../images/timer.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  display: none;
-}
-
-.clockText {
-  position: absolute;
-  text-align: center;
-  top: 10px;
-  font-size: 29px;
-  /* word-spacing: 14px; */
-  font-family: 'Digital';
-  font-weight: bold;
-  letter-spacing: 0.7px;
-  color: #FFFF99;
-  left: 13px;
-  width: 94px;
-}
-
-.ballText {
-  position: absolute;
-  top: 23px;
-  left: 22px;
-  font-size: 13px;
-  font-family: 'Trebuchet';
-  /* letter-spacing: 0.7px; */
-  word-spacing: 5px;
-  color: #333333;
-}
-
-.ballDiameterDiv {
-  position: absolute;
-  width: 116px;
-  height: 47px;
-  top: 18px;
-  left: 156px;
-  background: url(../images/ballDiameter.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.ringText {
-  top: 83px;
-}
-
-.ringDiameterDiv {
-  top: 78px;
-}
-
-.ballDiameterText {
-  position: absolute;
-  top: 2px;
-  left: 22px;
-  font-size: 16px;
-  font-family: 'Trebuchet';
-  /* font-weight: bold; */
-  color: #333333;
-}
-
-.ringDiameterText {
-  position: absolute;
-  top: 2px;
-  left: 22px;
-  font-size: 16px;
-  font-family: 'Trebuchet';
-  /* font-weight: bold; */
-  color: #333333;
-}
-
-.mettalBall {
-  position: absolute;
-  width: 51px;
-  height: 45px;
-  top: 38px;
-  cursor: pointer;
-}
-
-.copperDiv {
-  left: 357px;
-  background: url(../images/copper.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.ironDiv {
-  left: 445px;
-  background: url(../images/iron.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.brassDiv {
-  left: 530px;
-  background: url(../images/brass.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.bronzeDiv {
-  left: 625px;
-  background: url(../images/bronze.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.mettalBallText {
-  position: absolute;
-  top: 80px;
-  font-size: 13px;
-  font-family: 'Trebuchet';
-  /* font-weight: bold; */
-  color: #333333;
-}
-
-.copperText {
-  left: 360px;
-}
-
-.ironText {
-  left: 459px;
-}
-
-.brassText {
-  left: 540px;
-}
-
-.bronzeText {
-  left: 630px;
 }
 
 .workSheetContainer {
@@ -433,7 +271,7 @@ b {
   width: 77px;
   height: 29px;
   top: 20px;
-  left: 350px;
+  right: 200px;
   background: url(../images/reset2.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -451,29 +289,62 @@ b {
   font-weight: bold;
 }
 
-/* main css starts*/
-
-.threshold {
+.stopDiv {
   position: absolute;
-  width: 290px;
-  top: 50px;
-  right: 280px;
-  background-color: #f0f0f0;
-  border: 1px solid #A0B4B0;
-  border-radius: 6px;
-  padding: 0px 20px;
+  width: 77px;
+  height: 29px;
+  top: 20px;
+  left: 350px;
+  background: url(../images/reset2.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
   display: none;
 }
 
-.thresholdText {
-  font-size: 14px;
+.stopText {
+  position: absolute;
   font-family: Arial;
+  top: 9px;
+  left: 16px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
   font-weight: bold;
-  color: #56565a;
-  word-spacing: 4px;
-  letter-spacing: 0.3px;
-  line-height: 20px;
+  width: 46px;
+  text-align: center;
 }
+
+.calculateDiv {
+  position: absolute;
+  width: 120px;
+  height: 29px;
+  top: 20px;
+  right: 20px;
+  background: url(../images/reset2.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  display: none;
+}
+
+.calculateDiv img{
+  margin-left: -10px;
+  margin-top: -5px;
+}
+
+.calculateText {
+  position: absolute;
+  font-family: Arial;
+  top: 9px;
+  left: 19px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  font-weight: bold;
+  width: 94px;
+  text-align: center;
+}
+
+/* main css starts*/
 
 .gotonextstep {
   text-align: center;
@@ -647,194 +518,4 @@ b {
 .show {
   opacity: 1 !important;
   display: block !important;
-}
-
-.tableContainer {
-  position: absolute;
-  left: 15px;
-  top: 5px;
-  display: none;
-}
-
-.tableContainer table {
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-}
-
-.tableContainer table th, .tableContainer table td {
-  text-align: center;
-  border: 1px solid #000;
-  padding: 4px 15px;
-}
-
-.tableContainer table th:nth-child(1) {
-  background-color: #ffeda6;
-}
-
-.tableContainer table th:nth-child(2) {
-  background-color: #cee685;
-}
-
-.tableContainer table tr td:nth-child(1) {
-  background-color: #fef7df;
-}
-
-.tableContainer table tr td:nth-child(2) {
-  background-color: #ebf4cf;
-}
-
-.standContainer {
-  position: absolute;
-  width: 220px;
-  height: 438px;
-  bottom: 103px;
-  left: 160px;
-}
-
-.graphic-normal, .graphic-active {
-  position: absolute;
-  bottom: 0;
-}
-
-.graphic-active {
-  display: none;
-}
-
-.graphic-normal img, .graphic-active img {
-  width: 220px;
-}
-
-.standContainer .water {
-  position: absolute;
-  bottom: 136px;
-  left: 22px;
-  height: 96px;
-  width: 133px;
-}
-
-.standContainer .water {
-  background-color: #d0dae0;
-}
-
-.standContainer .boilingwater {
-  position: absolute;
-  bottom: 136px;
-  left: 22px;
-  height: 115px;
-  width: 133px;
-  display: none;
-}
-
-.standContainer .boilingwater img {
-  width: 133px;
-  height: 115px;
-}
-
-.termameterredbarwrapper {
-  position: absolute;
-  bottom: 168px;
-  left: 114px;
-  width: 2px;
-  height: 213px;
-  z-index: 1;
-}
-
-.termameterredbar {
-  position: absolute;
-  background-color: #ff2e2e;
-  opacity: 0.6;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  height: 30%;
-}
-
-.burnerKnob {
-  position: absolute;
-  width: 54px;
-  height: 30px;
-  left: 46px;
-  bottom: 28px;
-  /* background-color: red; */
-  cursor: pointer;
-}
-
-.graphTempVsTime {
-  position: absolute;
-  left: 330px;
-  top: 70px;
-  display: none;
-}
-
-.txtTemp {
-  position: absolute;
-  top: 10px;
-  left: 150px;
-  width: 47px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.gradientyAxis {
-  position: absolute;
-  width: 60px;
-  top: 0;
-  left: 8px;
-  height: 238px;
-  border-right: 1px solid #000;
-  background-image: linear-gradient(to left, #cee685, #d5ea98, #ddedaa, #e4f1bd, #ebf4cf);
-}
-
-.gradientxAxis {
-  position: absolute;
-  height: 44px;
-  bottom: 9px;
-  left: 68px;
-  width: 323px;
-  border-top: 1px solid #000;
-  background-image: linear-gradient(to left, #ffeda6, #fff0b4, #fff2c3, #fff5d1, #fef7df);
-}
-
-.highcharts-background {
-  fill: transparent !important;
-}
-
-.gradientBG {
-  background-image: url(assets/images/crops/graph_base.svg);
-  background-repeat: no-repeat;
-}
-
-.myChartBG {
-  position: absolute;
-  height: 44px;
-  bottom: 9px;
-  background-image: url(assets/images/crops/graph_base.svg);
-  background-repeat: no-repeat;
-}
-
-.opacburner {
-  position: absolute;
-  height: 44px;
-  bottom: 80px;
-  left: 47px;
-  display: none;
-}
-
-.opacburner img {
-  height: 116px;
-}
-
-.opactermometer {
-  position: absolute;
-  height: 44px;
-  top: 16px;
-  left: 108px;
-  display: none;
-}
-
-.opactermometer img {
-  height: 275px;
 }

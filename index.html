@@ -6,7 +6,7 @@
    <meta name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Water Cooling - Temperature versus Time</title>
+   <title>Spring Oscillation - Experimental Verification of Time Period</title>
    <link rel="stylesheet" href="assets/jslib/normalize_5.0.css">
    <link rel="stylesheet" href="assets/jslib/jquery_ui_1.12.1/jquery_ui_1.12.1.min.css">
    <link rel="stylesheet" href="assets/css/main.css">
@@ -38,7 +38,7 @@
       </div>
       <div id="topmenubar2">
          <div id="contentTittle">
-            <p class="titleName">Water Cooling - Temperature versus Time</p>
+            <p class="titleName">Spring Oscillation - Experimental Verification of Time Period</p>
          </div>
       </div>
 
@@ -49,127 +49,23 @@
             <div id="slide1Content">
                <div class="contentContainer">
                   <div class="contentDiv"></div>
-                  <div class="resetDiv">
+                  <div class="stopDiv show">
+                     <span class="stopText">STOP</span>
+                  </div>
+                  <div class="resetDiv show">
                      <span class="resetText">RESET</span>
                   </div>
-               </div>
-               <div class="tableContainer">
-                  <table id="tableCoolingTemp">
-                     <thead>
-                        <tr>
-                           <th>Time <br>(min)</th>
-                           <th>Temp <br> &deg;C</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                           <td></td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-               <div class="standContainer">
-                  <div class="mainstand">
-                  <div class="water"></div>
-                  <div class="boilingwater"><img src="assets/images/crops/bubble_ani.gif"></div>
-                  <div class="termameterredbarwrapper">
-                     <div class="termameterredbar"></div>
+                  <div class="calculateDiv show">
+                     <img src="assets/images/crops/calculator.png">
+                     <span class="calculateText">Calculate</span>
                   </div>
-                  <div class="graphic-normal"><img src="assets/images/crops/graphic_normal.png"></div>
-                  <div class="graphic-active"><img src="assets/images/crops/graphic_active.png"></div>
-                  <div class="burnerKnob off"></div>
-                  <div class="txtTemp">30</div>
-                  </div>
-                  <div class="opacburner">
-                     <img src="assets/images/crops/burner_normal.png">
-                  </div>
-                  <div class="opactermometer">
-                     <img src="assets/images/crops/thermometer.png">
-                  </div>
-                  <div class="opactermometer2"></div>
-                  <div></div>
-               </div>
-               <div class="graphTempVsTime">
-                  <div class="gradientyAxis"></div>
-                  <div class="gradientxAxis"></div>
-                  <div class="myChartBG"></div>
-                  <div id="myChart"></div>
-               </div>
-               <div class="threshold">
-                  <p class="thresholdText">
-                     The water in the beaker has been heated to <b class="heatedToTempVal">100</b> &deg;C
-                  </p>
-                  <p class="thresholdText">Click the button below to observe the rate of cooling of water. Record the
-                     decrease in temperature at a regular interval and plot the graph of Temperature versus Time.</p>
-                  <div class="gotonextstep">
-                     <button class="gotonextstepbtn">Go to Next Stage</button>
+                  <div class="sliderContainer">
+                     
                   </div>
                </div>
-               <div class="timerDiv">
-                  <div class="clockText">00:00</div>
+               <div class="graphDisplacementVsTime">
+                  
                </div>
-
                <div class="workSheetContainer">
                   <p class="worksheetTitle">Use the worksheet provided to you, to enter readings of the experiment.</p>
                   <div class="workSheetDiv" onclick="OpenWord()">
@@ -219,29 +115,19 @@
                      <img class="closeProcd closeProcdBefore" src="assets/images/closeUp.png" />
                      <span class="closeProcdTxt">CLOSE</span>
                      <div class="procedSteps procedSteps1">
-                        <p>Specify a value between 20 and 240 as the time-scale between the program time and the actual
-                           experiment time.</p>
+                        <p>Set the mass of the bob by using the Mass slider.</p>
                      </div>
                      <div class="procedSteps procedSteps2">
-                        <p>Heat the water using the Bunsen burner. Click the burner to switch it on.</p>
+                        <p>Set the Damping value and the Spring Constant using the respective sliders.</p>
                      </div>
                      <div class="procedSteps procedSteps3">
-                        <br>Observe the thermometer to know the increase in temperature of water.</p>
+                        <br>To start the oscillation, drag the metal bob pressing the mouse button down. When the bob has been dragged through the required distance, release the mouse button and the bob will start oscillating</p>
                      </div>
                      <div class="procedSteps procedSteps4">
-                        <p>You can switch off the burner any time to stop heating or wait until the temperature reaches
-                           100 deg.</p>
+                        <p>Observe the oscillations of the bob and the corresponding curve plotted on the graph</p>
                      </div>
                      <div class="procedSteps procedSteps5">
-                        <p>On reaching temperature of 100 deg or switching off the burner prior to that, you will be
-                           prompted to go to the NEXT stage.</p>
-                     </div>
-                     <div class="procedSteps procedSteps6">
-                        <p>In Stage 2 of the experiment, you can observe the rate of cooling of water over a period of
-                           time.</p>
-                     </div>
-                     <div class="procedSteps procedSteps7">
-                        <p>Click RESET to repeat the experiment.</p>
+                        <p>Click STOP to stop the oscillation. Repeat the experiment with different sets of values.</p>
                      </div>
                   </div>
                </div>
