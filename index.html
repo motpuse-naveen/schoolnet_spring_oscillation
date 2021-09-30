@@ -60,11 +60,69 @@
                      <span class="calculateText">Calculate</span>
                   </div>
                   <div class="sliderContainer">
-                     
+                     <table>
+                        <tr>
+                           <td>Mass</td>
+                           <td>
+                              <div class="rangeWrapdiv relativediv">
+                                 <div class="divrangestart">0.1</div>
+                                 <div class="divrangeend">1</div>
+                                 <input class="slider" type="range" id="sliderMass" name="mass" min="0.1" max="1"
+                                    step="0.1" value="0.5">
+                              </div>
+                           </td>
+                           <td>
+                              <div class="relativediv inputwrap">
+                                 <div class="input_box inputMass">0.5</div>
+                              </div>
+                              Kg
+                           </td>
+                           <td>&nbsp;</td>
+                           <td>Spring Constant</td>
+                           <td>
+                              <div class="rangeWrapdiv relativediv">
+                                 <div class="divrangestart">0.1</div>
+                                 <div class="divrangeend">1</div>
+                                 <input class="slider" type="range" id="sliderSpringConstant" name="springconstant"
+                                    min="1" max="5" step="1" value="3">
+                              </div>
+                           </td>
+                           <td>
+                              <div class="relativediv inputwrap">
+                                 <div class="input_box inputSpringConstant">3</div>
+                              </div>
+                              N/m
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Damping</td>
+                           <td>
+                              <div class="rangeWrapdiv relativediv">
+                                 <div class="divrangestart">0.1</div>
+                                 <div class="divrangeend">1</div>
+                                 <input class="slider" type="range" id="sliderDamping" name="damping" min="0.1"
+                                    max="0.5" step="0.1" value="0">
+                              </div>
+                           </td>
+                           <td>
+                              <div class="relativediv inputwrap">
+                                 <div class="input_box inputDamping">0</div>
+                              </div>
+                           </td>
+                           <td>&nbsp;</td>
+                           <td>Time Period</td>
+                           <td>
+                              <div class="relativediv inputwrap">
+                                 <div class="input_box inputSpringConstant">3</div>
+                              </div> Sec
+                           </td>
+                           <td></td>
+                        </tr>
+                     </table>
                   </div>
                </div>
                <div class="graphDisplacementVsTime">
-                  
+
                </div>
                <div class="workSheetContainer">
                   <p class="worksheetTitle">Use the worksheet provided to you, to enter readings of the experiment.</p>
@@ -121,7 +179,9 @@
                         <p>Set the Damping value and the Spring Constant using the respective sliders.</p>
                      </div>
                      <div class="procedSteps procedSteps3">
-                        <br>To start the oscillation, drag the metal bob pressing the mouse button down. When the bob has been dragged through the required distance, release the mouse button and the bob will start oscillating</p>
+                        <br>To start the oscillation, drag the metal bob pressing the mouse button down. When the bob
+                        has been dragged through the required distance, release the mouse button and the bob will start
+                        oscillating</p>
                      </div>
                      <div class="procedSteps procedSteps4">
                         <p>Observe the oscillations of the bob and the corresponding curve plotted on the graph</p>

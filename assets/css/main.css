@@ -270,7 +270,7 @@ b {
   position: absolute;
   width: 77px;
   height: 29px;
-  top: 20px;
+  top: 10px;
   right: 200px;
   background: url(../images/reset2.png);
   background-repeat: no-repeat;
@@ -293,7 +293,7 @@ b {
   position: absolute;
   width: 77px;
   height: 29px;
-  top: 20px;
+  top: 10px;
   left: 350px;
   background: url(../images/reset2.png);
   background-repeat: no-repeat;
@@ -318,7 +318,7 @@ b {
   position: absolute;
   width: 120px;
   height: 29px;
-  top: 20px;
+  top: 10px;
   right: 20px;
   background: url(../images/reset2.png);
   background-repeat: no-repeat;
@@ -489,24 +489,6 @@ b {
   /* word-spacing: 2px; */
   display: block;
 }
-
-.procedSteps2 {
-  /* word-spacing: 3.4px; */
-}
-
-.procedSteps3 {
-  /* word-spacing: 1.4px; */
-  /* top: 11px; */
-}
-
-.procedSteps4 {
-  /* word-spacing: 2.1px; */
-}
-
-.procedSteps5, .procedSteps6 {
-  /* word-spacing: 2px; */
-}
-
 .hideDivs {
   opacity: 0.3;
 }
@@ -519,3 +501,70 @@ b {
   opacity: 1 !important;
   display: block !important;
 }
+.sliderContainer{
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  font-family: Arial;
+}
+
+.sliderContainer table td{padding: 5px;}
+
+.txtright{
+  text-align: right;
+}
+.relativediv{position: relative}
+.divrangestart{position: absolute;left: 0; top: -20px;}
+.divrangeend{position: absolute;right: 0; top: -20px;}
+
+.inputwrap{
+  width: 80px;
+  height: 38px;
+  background: url(../images/crops/text_box.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+}
+.input_box{
+  padding: 12px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+/*Slider CSS*/
+input[type=range]{
+  /* fix for FF unable to apply focus style bug  */
+  border: 1px solid white; 
+
+  /*required for proper track sizing in FF*/
+  width: 300px;
+}
+
+input[type=range]::-moz-range-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+  background: #ccc;
+}
+/*End*/
