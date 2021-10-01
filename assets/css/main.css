@@ -327,7 +327,7 @@ b {
   display: none;
 }
 
-.calculateDiv img{
+.calculateDiv img {
   margin-left: -10px;
   margin-top: -5px;
 }
@@ -489,6 +489,7 @@ b {
   /* word-spacing: 2px; */
   display: block;
 }
+
 .hideDivs {
   opacity: 0.3;
 }
@@ -501,7 +502,8 @@ b {
   opacity: 1 !important;
   display: block !important;
 }
-.sliderContainer{
+
+.sliderContainer {
   position: absolute;
   top: 60px;
   left: 0;
@@ -510,16 +512,31 @@ b {
   font-family: Arial;
 }
 
-.sliderContainer table td{padding: 5px;}
+.sliderContainer table td {
+  padding: 5px;
+}
 
-.txtright{
+.txtright {
   text-align: right;
 }
-.relativediv{position: relative}
-.divrangestart{position: absolute;left: 0; top: -20px;}
-.divrangeend{position: absolute;right: 0; top: -20px;}
 
-.inputwrap{
+.relativediv {
+  position: relative
+}
+
+.divrangestart {
+  position: absolute;
+  left: 0;
+  top: -20px;
+}
+
+.divrangeend {
+  position: absolute;
+  right: 0;
+  top: -20px;
+}
+
+.inputwrap {
   width: 80px;
   height: 38px;
   background: url(../images/crops/text_box.png);
@@ -527,23 +544,51 @@ b {
   background-size: 100% 100%;
   display: inline-block;
 }
-.input_box{
+
+.input_box {
   padding: 12px 0px;
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 /*Slider CSS*/
-input[type=range]{
-  /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white; 
 
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin-top: -5px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+input[type=range] {
+  /* fix for FF unable to apply focus style bug  */
+  border: 1px solid white;
   /*required for proper track sizing in FF*/
-  width: 300px;
 }
 
 input[type=range]::-moz-range-track {
-  width: 300px;
   height: 5px;
   background: #ddd;
   border: none;
@@ -559,7 +604,8 @@ input[type=range]::-moz-range-thumb {
 }
 
 /*hide the outline behind the border*/
-input[type=range]:-moz-focusring{
+
+input[type=range]:-moz-focusring {
   outline: 1px solid white;
   outline-offset: -1px;
 }
@@ -567,4 +613,51 @@ input[type=range]:-moz-focusring{
 input[type=range]:focus::-moz-range-track {
   background: #ccc;
 }
+
+input[type=range]::-ms-track {
+  width: 300px;
+  height: 5px;
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+  /*remove default tick marks*/
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+
 /*End*/
+
+.springCanvas{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #d0cccc;
+
+}
