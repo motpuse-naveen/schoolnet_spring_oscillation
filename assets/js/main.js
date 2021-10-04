@@ -59,12 +59,12 @@ $('.prevProcd').on('click', function () {
   $('.procdNum').text(procedCount + ")");
 });
 $('.nextProcd').on('click', function () {
-  if (procedCount < 6) {
+  if (procedCount < 4) {
     procedCount++;
     $('.nextProcd').css({ 'opacity': '1', 'pointer-events': 'all' });
     $('.prevProcd').css({ 'opacity': '1', 'pointer-events': 'all' });
   } else {
-    procedCount = 7;
+    procedCount = 5;
     $('.nextProcd').css({ 'opacity': '0.5', 'pointer-events': 'none' });
   }
   $('.procedSteps').css('display', 'none');

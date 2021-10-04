@@ -6,7 +6,7 @@ var SpringOscillationChart = (function () {
         init: function (pdata) {
             chart = Highcharts.chart('myChart', {
                 chart: {
-                    type: 'line',
+                    type: 'spline',
                     width: 460,
                     height:350,
                     animation: false
