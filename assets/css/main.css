@@ -121,6 +121,9 @@ html, body {
   letter-spacing: 0.7px;
   color: #000033;
   font-weight: bold;
+  margin-left: 200px;
+  margin-right: 20px;
+  width: 400px;
 }
 
 #downmenubar {
@@ -324,7 +327,6 @@ b {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
-  display: none;
 }
 
 .calculateDiv img {
@@ -401,6 +403,9 @@ b {
   font-size: 12.2px;
   text-align: left;
   display: none;
+}
+.procedSteps p{
+  margin-bottom: 0px;
 }
 
 .procdClick {
@@ -553,111 +558,253 @@ b {
 
 /*Slider CSS*/
 
-input[type=range] {
+input[type="range"] {
   -webkit-appearance: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
+  /*margin-right: 15px;
+  width: 200px;*/
   height: 5px;
-  background: #ddd;
-  border: none;
-  border-radius: 3px;
+  background: #9ba8ae;
+  border-radius: 5px;
+  background-image: linear-gradient(#cb8e0b, #cb8e0b);
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+  border: 1px solid #000000;
 }
 
-input[type=range]::-webkit-slider-thumb {
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
-  background: goldenrod;
-  margin-top: -5px;
+  /*background: #ff4500;*/
+  background-image: url(../images/crops/green_btn.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
 }
 
-input[type=range]:focus {
-  outline: none;
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-image: url(../images/crops/green_btn.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ccc;
+input[type="range"]::-ms-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-image: url(../images/crops/green_btn.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+/*
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #ff0200;
 }
 
-input[type=range] {
-  /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white;
-  /*required for proper track sizing in FF*/
+input[type="range"]::-moz-range-thumb:hover {
+  background: #ff0200;
+}
+
+input[type="range"]::-ms-thumb:hover {
+  background: #ff0200;
+}
+*/
+/* Input Track */
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 input[type=range]::-moz-range-track {
-  height: 5px;
-  background: #ddd;
+  -webkit-appearance: none;
+  box-shadow: none;
   border: none;
-  border-radius: 3px;
-}
-
-input[type=range]::-moz-range-thumb {
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: goldenrod;
-}
-
-/*hide the outline behind the border*/
-
-input[type=range]:-moz-focusring {
-  outline: 1px solid white;
-  outline-offset: -1px;
-}
-
-input[type=range]:focus::-moz-range-track {
-  background: #ccc;
-}
-
-input[type=range]::-ms-track {
-  width: 300px;
-  height: 5px;
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
-  /*leave room for the larger thumb to overflow with a transparent border */
-  border-color: transparent;
-  border-width: 6px 0;
-  /*remove default tick marks*/
-  color: transparent;
 }
 
-input[type=range]::-ms-fill-lower {
-  background: #777;
-  border-radius: 10px;
-}
-
-input[type=range]::-ms-fill-upper {
-  background: #ddd;
-  border-radius: 10px;
-}
-
-input[type=range]::-ms-thumb {
+input[type="range"]::-ms-track {
+  -webkit-appearance: none;
+  box-shadow: none;
   border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: goldenrod;
+  background: transparent;
 }
-
-input[type=range]:focus::-ms-fill-lower {
-  background: #888;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-  background: #ccc;
-}
-
 /*End*/
 
-.springCanvas{
+.springCanvas {
+  position: absolute;
+  top: -30px;
+  left: 28px;
+}
+.springholder{
+  height: 42px;
+}
+.springImage {
+  width: 56px;
+  height: 100%;
+  margin: 0px 46px;
+}
+.springWrapper{
+  height: 200px;
+  margin-top: -9px;
+}
+.springWeight{
+  height: 62px;
+  width: 57px;
+  position: absolute;
+  top: 232px;
+  left: 45px;
+}
+.weightImage{
+  margin-top: -8px;
+}
+.weightDispText{
+  position: absolute;
+  left: 65px;
+  top:30px;
+  color: #007bff;
+}
+
+.calculatePopup {
+  position: absolute;
+  background-color: #ffffd6;
+  z-index: 100;
+  width: 500px;
+  height: 400px;
+  border: 2px solid #80542a;
+  left: 11%;
+  top: 21%;
+  box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
+display: none;
+}
+
+.squarerootbar {
+  border-top: 1px solid;
+}
+
+.calculatePopup .title, .calculatePopup .body {
+  padding: 10px 60px;
+}
+
+.calculatePopup .title {
+  background-image: url(../images/crops/shape236.svg);
+  background-repeat: no-repeat;
+  background-size: 111% 100%;
+  border-bottom: 2px solid #80542a;
+}
+
+.calculatePopup .titleIcon{
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+.calculatePopup .popupcloseIcon{
   position: absolute;
   top: 10px;
-  left: 10px;
-  background-color: #d0cccc;
+  right: 10px;
+  cursor: pointer;
+}
 
+.springTest{
+  position: absolute;
+  background-color: #fff;
+  top:100px;
+  left: 100px;
+  z-index: 100;
+
+}
+
+.graphDisplacementVsTime{
+  position: absolute;
+  left: 200px;
+  top: 30px;
+}
+.highcharts-background {
+  fill: transparent !important;
+}
+.gradientyAxis {
+  position: absolute;
+  width: 35px;
+  top: 0;
+  left: 34px;
+  height: 100%;
+  border-right: 1px solid #000;
+  background-image: linear-gradient(to left, #cee685, #d4e799, #dae9ac, #e0eabf, #e5ebd2);
+}
+.xAxisLine{
+  position: absolute;
+  width: 83%;
+  top: 173px;
+  left: 69px;
+  height: 1px;
+  background-color: #000;
+}
+.top-arrow, .down-arrow, .right-arrow{
+  position: absolute;
+  width: 11px;
+}
+.top-arrow{
+  left: 64px;
+  top: -8px;
+}
+.down-arrow{
+  left:64px;
+  bottom:-8px;
+}
+.right-arrow{
+  right: 2px;
+  top: 168px;
+}
+.x-axis-text{
+  position: absolute;
+  right: -57px;
+  top: 167px;
+  font-size: 12px;
+  width: 60px;
+  text-align: center;
+  color: #7f542a;
+}
+.x-axis-minlimit{
+  position: absolute;
+  left: -13px;
+  top: 167px;
+  font-size: 12px;
+  width: 60px;
+  text-align: center;
+}
+.x-axis-minlimit-hider{
+  position: absolute;
+    left: 38px;
+    top: 167px;
+    font-size: 12px;
+    width: 20px;
+    height: 16px;
+    text-align: center;
+  background-image: linear-gradient(to left, #cee685, #d4e799, #dae9ac, #e0eabf, #e5ebd2);
+}
+.x-axis-maxlimit{
+  position: absolute;
+    right: -57px;
+    top: 185px;
+    font-size: 12px;
+    width: 60px;
+    text-align: center;
 }

@@ -50,45 +50,45 @@
             <div id="slide1Content">
                <div class="contentContainer">
                   <div class="contentDiv"></div>
-                  <div class="stopDiv show">
+                  <div class="stopDiv">
                      <span class="stopText">STOP</span>
                   </div>
-                  <div class="resetDiv show">
+                  <div class="resetDiv">
                      <span class="resetText">RESET</span>
                   </div>
-                  <div class="calculateDiv show">
+                  <div class="calculateDiv">
                      <img src="assets/images/crops/calculator.png">
                      <span class="calculateText">Calculate</span>
                   </div>
                   <div class="sliderContainer">
                      <table>
                         <tr>
-                           <td>Mass</td>
-                           <td>
+                           <td class="section_mass">Mass</td>
+                           <td class="section_mass">
                               <div class="rangeWrapdiv relativediv">
                                  <div class="divrangestart">0.1</div>
                                  <div class="divrangeend">1</div>
                                  <input class="slider" type="range" id="sliderMass" name="mass" min="0.1" max="1"
-                                    step="0.1" value="0.5">
+                                    step="0.1" value="0.5" style="background-size: 44.4444% 100%;">
                               </div>
                            </td>
-                           <td>
+                           <td class="section_mass">
                               <div class="relativediv inputwrap">
                                  <div class="input_box inputMass">0.5</div>
                               </div>
                               Kg
                            </td>
                            <td>&nbsp;</td>
-                           <td>Spring Constant</td>
-                           <td>
+                           <td class="section_sc">Spring Constant</td>
+                           <td class="section_sc">
                               <div class="rangeWrapdiv relativediv">
-                                 <div class="divrangestart">0.1</div>
-                                 <div class="divrangeend">1</div>
+                                 <div class="divrangestart">1</div>
+                                 <div class="divrangeend">5</div>
                                  <input class="slider" type="range" id="sliderSpringConstant" name="springconstant"
-                                    min="1" max="5" step="1" value="3">
+                                    min="1" max="5" step="1" value="3" style="background-size: 50% 100%;">
                               </div>
                            </td>
-                           <td>
+                           <td class="section_sc">
                               <div class="relativediv inputwrap">
                                  <div class="input_box inputSpringConstant">3</div>
                               </div>
@@ -96,25 +96,25 @@
                            </td>
                         </tr>
                         <tr>
-                           <td>Damping</td>
-                           <td>
+                           <td class="section_damp">Damping</td>
+                           <td class="section_damp">
                               <div class="rangeWrapdiv relativediv">
-                                 <div class="divrangestart">0.1</div>
-                                 <div class="divrangeend">1</div>
-                                 <input class="slider" type="range" id="sliderDamping" name="damping" min="0.1"
-                                    max="0.5" step="0.1" value="0">
+                                 <div class="divrangestart">0</div>
+                                 <div class="divrangeend">0.5</div>
+                                 <input class="slider" type="range" id="sliderDamping" name="damping" min="0"
+                                    max="0.5" step="0.1" value="0" style="background-size: 0% 100%;">
                               </div>
                            </td>
-                           <td>
+                           <td class="section_damp">
                               <div class="relativediv inputwrap">
                                  <div class="input_box inputDamping">0</div>
                               </div>
                            </td>
                            <td>&nbsp;</td>
-                           <td>Time Period</td>
-                           <td>
+                           <td class="section_tp">Time Period</td>
+                           <td class="section_tp">
                               <div class="relativediv inputwrap">
-                                 <div class="input_box inputSpringConstant">3</div>
+                                 <div class="input_box inputTimePeriod"></div>
                               </div> Sec
                            </td>
                            <td></td>
@@ -123,10 +123,29 @@
                   </div>
                </div>
                <div class="springCanvas">
-                  <canvas id="cv" width="250" height="380"></canvas>
+                  <!--<canvas id="cv" width="250" height="380"></canvas>-->
+                  <div class="springholder">
+                     <img src="assets/images/crops/hook.png">
+                  </div>
+                  <div class="springWrapper">
+                     <img class="springImage" src="assets/images/crops/spring.png">
+                  </div>
+                  <div class="springWeight">
+                     <img class="weightImage" src="assets/images/crops/weight.png">
+                     <span class="weightDispText"></span>
+                  </div>
                </div>
                <div class="graphDisplacementVsTime">
-
+                  <div class="gradientyAxis"></div>
+                  <div id="myChart"></div>
+                  <div class="xAxisLine"></div>
+                  <img class="down-arrow" src="assets/images/crops/down-arrow.png">
+                  <img class="top-arrow" src="assets/images/crops/top-arrow.png">
+                  <img class="right-arrow" src="assets/images/crops/right-arrow.png">
+                  <div class="x-axis-minlimit-hider"></div>
+                  <div class="x-axis-text">Time (sec)</div>
+                  <div class="x-axis-minlimit">0</div>
+                  <div class="x-axis-maxlimit">150</div>
                </div>
                <div class="workSheetContainer">
                   <p class="worksheetTitle">Use the worksheet provided to you, to enter readings of the experiment.</p>
@@ -136,31 +155,31 @@
                   <input id="file-input" type="file" name="name" style="display: none;" />
                   <div class="workSheetContent">
                      <div class="workSheetText">
-                        <p><b>Aim:</b> To measure the temperature of hot water as it cools and to plot a Temperature
-                           versus Time plot.</p>
-                        <p><b>Rate of Cooling</b></p>
-                        <p>When hot water cools, the rate of decrease in temperature follows Newton's Law of Cooling.
-                           According to this law, the rate of change of the temperature of a body is proportional to the
-                           difference between its own temperature and the ambient temperature, i.e. the temperature of
-                           its surroundings. This means that when the temperature of water is quite high compared to the
-                           room temperature, the temperature drops quite rapidly. However, as the water keeps cooling
-                           off the difference between its temperature and the room temperature steadily reduces and the
-                           rate of decrease of temperature also starts slowing down. This behaviour is demonstrated when
-                           you plot the graph of Temperature versus Time for cooling down of hot water from a high
-                           temperature to the room temperature.</p>
+                        <p><b>Aim:</b> To explore oscillatory motion using spring and bob system.</p>
+                        <p><b>Spring & Bob</b></p>
+                        <p>A bob attached to a spring and displaced from its mean position will oscillate top to bottom in the vertical direction. This type of motion is known as Simple Harmonic Motion.</p>
+                        <p><b>Amplitude:</b> The maximum displacement of the bob from the mean position (centre) towards one side is known as its Amplitude.</p>
+                        <p><b>Time Period:</b> The time taken by bob to complete one oscillation (from one extreme position to the other) is known as the Time Period and is usually measured in seconds.</p>
+                        <p><b>Simple Harmonic Motion</b></p>
+                        <p>Oscillatory motion is also known as periodic motion because of its repetitive nature and is either in form of circular motion or as wave motion. The simplest type of oscillatory motion is the simple harmonic motion (SHM). A body or an object is said to be in simple harmonic motion when the force that tries to restore the object to its rest position is proportional to the displacement of the object. The force, which tries to restore the object to its original position or equilibrium, is termed as the restoring force.</p>
+                        <p>If the displacement of the body in SHM is plotted over time, we get a Sine curve.</p>
+                        <p><b>Damped Harmonic Motion</b></p>
+                        <p>In an ideal SHM, there are no other forces except the weight and the restoring force and therefore the body can go on oscillating forever. In real life however, air resistance acts against the motion of the oscillating body eventually bringing the system into a state of equilibrium. Air is a natural damper, but there also many other ways of artificially damping a periodic motion. The damping force acts opposite to the motion of the body and therefore the amplitude of the oscillations decreases exponentially with time, eventually approaching zero. If the damping force is very great then no oscillations occur.</p>
                         <p><b>Apparatus</b></p>
-                        <p>Beaker filled with Water</p>
-                        <p>Bunsen Burner with tripod and wire gauze</p>
-                        <p>Thermometer</p>
-                        <p><b>Procedure:</b></p>
-                        <p>Place the beaker partially filled with water on a tripod stand with a Bunsen burner below it.
-                        </p>
-                        <p>Start heating the water with the Bunsen burner.</p>
-                        <p>Allow the temperature of water to increase till 100 deg.</p>
-                        <p>Stop heating by switching off the burner.</p>
-                        <p>Start the timer and measure the temperature for every 1 deg drop in the temperature.</p>
-                        <p>Measure the decrease in temperature for around 30 minutes. </p>
-                        <p>Plot a graph of Temperature versus Time </p>
+                        <p>Springs of varying spring constants</p>
+                        <p>Bobs of varying masses</p>
+                        <p>Timer</p>
+                        <p>Stand</p>
+                        <p>Scale</p>
+                        <p><b>Material:</b></p>
+                        <p>Water</p>
+                        <p><b>Procedure</b></p>
+                        <p>Attach the spring to the hook connected to the stand.</p>
+                        <p>Attach a bob of known mass to the spring.</p>
+                        <p>Hold and drag the bob away from its resting position and leave at the desired amplitude.</p>
+                        <p>The bob starts oscillating from top to bottom in a linear direction.</p>
+                        <p>Observe the characteristics of the simple harmonic motion exhibited by the oscillating spring and bob.</p>
+                        <p>Repeat the experiment with different mass and spring of different spring constant values.</p>
                      </div>
                   </div>
                   <p class="copyRight">© 2019, Schoolnet India Limited</p>
@@ -183,7 +202,7 @@
                         <p>Set the Damping value and the Spring Constant using the respective sliders.</p>
                      </div>
                      <div class="procedSteps procedSteps3">
-                        <br>To start the oscillation, drag the metal bob pressing the mouse button down. When the bob
+                        <p>To start the oscillation, drag the metal bob pressing the mouse button down. When the bob
                         has been dragged through the required distance, release the mouse button and the bob will start
                         oscillating</p>
                      </div>
@@ -196,13 +215,25 @@
                   </div>
                </div>
             </div>
+            <div class="calculatePopup">
+               <div class="titleIcon"><img src="assets/images/crops/calculator.png"></div>
+               <div class="popupcloseIcon"><img src="assets/images/crops/shape315.svg"></div>
+               <div class="title">calculations</div>
+               <div class="body">
+                  <p>Note: The calculations given below are applicable only for zero damping</p>
+                  <p>Amplitude (A) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m</p>
+                  <p>Mass (m) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kg</p>
+                  <p>Spring constant (k) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N/m</p>
+                  <p>Time Period, T = 2&pi; <span>&#8730;</span><span class="squarerootbar"> (m / k) </span>  = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sec</p>
+               </div>
+            </div>
+            
          </div>
          <div id="downmenubar">
             <!-- <p class="copyRight">© 2019, Schoolnet India Limited</p> -->
          </div>
       </div>
-      <script src="assets/js/TimeFactorObject.js"></script>
-      <script src="assets/js/spring.js"></script>
+      <script src="assets/js/SpringOscillationChart.js"></script>
       <script src="assets/js/main.js"></script>
 </body>
 

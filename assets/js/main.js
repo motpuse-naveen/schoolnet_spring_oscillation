@@ -23,7 +23,6 @@ $(document).on('click', '#upScroller', function () {
   $('#contentsName').css('top', '33px')
 });
 
-
 //File close Func
 $(document).on('click', '#closeBtn', function () {
   window.close();
@@ -42,6 +41,7 @@ function OpenWord() {
 
 $(document).ready(function () {
   showSlides(slideIndex);
+  SpringOscillationChart.init([{ "x": 0, "y": 0 }]);
 });
 
 var procedCount = 1;
@@ -118,30 +118,230 @@ $('.closeProcd').on('mouseout', function () {
 
 $('.showObj').on('mouseover', function () {
   $(this).attr('src', 'assets/images/showObj.gif').css('cursor', 'pointer');
-  $('.contentContainer, .tableContainer, .mainstand, .graphTempVsTime, .threshold, .timerDiv').css('opacity', '0.3');
+  $('.springholder, .springWrapper, .springWeight, .graphDisplacementVsTime, table tr td, .stopDiv, .calculateDiv, .resetDiv').css('opacity', '0.3');
   if (procedCount == 1) {
-    
+    $(".springWeight").css('opacity', '1');
+    $("td.section_mass").css('opacity', '1');
   }
-  if (procedCount == 2 || procedCount == 4) {
-    $(".standContainer .opacburner").show().css('opacity', '1');
+  if (procedCount == 2) {
+    $("td.section_sc").css('opacity', '1');
+    $("td.section_damp").css('opacity', '1');
   }
   if (procedCount == 3) {
-    $(".standContainer .opactermometer").show().css('opacity', '1');
+    $(".springWeight").css('opacity', '1');
   }
-  if (procedCount == 6) {
-    $(".standContainer .opactermometer").show().css('opacity', '1');
+  if (procedCount == 4) {
+    $(".springWrapper").css('opacity', '1');
+    $(".springWeight").css('opacity', '1');
+    $(".graphDisplacementVsTime").css('opacity', '1');
+  }
+  if(procedCount == 5){
+    $(".stopDiv").css('opacity', '1');
   }
 });
 
 $('.showObj').on('mouseout', function () {
   $(this).attr('src', 'assets/images/showObjM.gif');
-  $('.contentContainer, .tableContainer,.mainstand, .graphTempVsTime, .threshold, .timerDiv').css('opacity', '1');
-  $(".standContainer .opacburner").hide().css('opacity', '1');
-  $(".standContainer .opactermometer").hide().css('opacity', '1');
+  $('.springholder, .springWrapper, .springWeight, .graphDisplacementVsTime, table tr td, .stopDiv, .calculateDiv, .resetDiv').css('opacity', '1');
 });
+
 $('.resetDiv').on('click', function () {
-  
+  myMass = 0.5;
+  myElasticity = 3;
+  myConstant = 3;
+  myDamping = 0;
+  myStartTime = new Date().getTime();
+  t = 0;
+  k = 0;
+  fade = true;
+  fade2 = true;
+  timeMultiple = 0;
+  Xvalue = 0;
+  Xvalue2 = 15;
+  myAmplitude = 0;
+  SpringOscillationChart.clearSeriesData();
+  $(".x-axis-minlimit").text(Xvalue * 10)
+  $(".x-axis-maxlimit").text(Xvalue2 * 10)
+
+  $("#sliderMass").val(0.5).css({ "background-size": "44.44% 100%" })
+  $(".inputMass").text(0.5);
+
+  $("#sliderSpringConstant").val(3).css({ "background-size": "50% 100%" })
+  $(".inputSpringConstant").text(3)
+
+  $("#sliderDamping").val(0).css({ "background-size": "0 100%" });
+  $(".inputDamping").text(0);
+
+  $(".inputTimePeriod").text("")
+  $(".springWeight").draggable('enable')
+
+  $(".resetDiv").hide();
+  $(".stopDiv").hide();
 });
+$('.stopDiv').on('click', function () {
+
+  clearInterval(springAnnimInterval);
+  springAnnimInterval = 0;
+  $(".resetDiv").show();
+  $(".stopDiv").hide();
+  $(".springWrapper").css({ "height": 200 })
+  $(".springWrapper").css({ "height": 200 })
+  $(".springWeight").css({ "top": 232 })
+});
+$(".calculateDiv").on('click', function () {
+  $(".calculatePopup").show();
+});
+$(".popupcloseIcon").on('click', function () {
+  $(".calculatePopup").hide();
+})
+
+const rangeInputs = document.querySelectorAll('input[type="range"]')
+//const numberInput = document.querySelector('input[type="number"]')
+
+function handleInputChange(e) {
+  let target = e.target
+  if (e.target.type !== 'range') {
+    target = document.getElementById('range')
+  }
+  const min = target.min
+  const max = target.max
+  const val = target.value
+  const name = target.name
+  if (name == "mass") $(".inputMass").text(val)
+  if (name == "springconstant") $(".inputSpringConstant").text(val)
+  if (name == "damping") $(".inputDamping").text(val)
+
+  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+}
+
+rangeInputs.forEach(input => {
+  input.addEventListener('input', handleInputChange)
+})
+
+var weightInitialTop = 232;
+var springOrigHeight = 200;
+var displacementMass = 0;
+
+$(".springWeight").draggable({
+  axis: "y",
+  cursor: "move",
+  drag: function (event, ui) {
+    //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
+    //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
+    if (ui.position.top < Math.max(112, ui.position.top)) {
+      ui.position.top = Math.max(112, ui.position.top);
+    }
+    if (ui.position.top > Math.min(352, ui.position.top)) {
+      ui.position.top = Math.min(352, ui.position.top);
+    }
+
+    //displacementMass = ui.position.top;
+    displacementMass = (ui.position.top - weightInitialTop)
+    //
+    $(".weightDispText").text((displacementMass / 2) + "" + "(cm)").show();
+    //
+    //Display_mc.Amp_txt.text = (displacementMass/2);
+    //
+    //trace("displacementMass = "+displacementMass);
+    $(".springWrapper").css({ "height": springOrigHeight + (displacementMass) })
+  },
+  start: function (event, ui) {
+    //$(this).addClass('my_class');
+  },
+  stop: function (event, ui) {
+    //$(this).removeClass('my_class');
+    Xvalue = 0;
+    Xvalue2 = 15;
+    myAmplitude = (ui.position.top - weightInitialTop);
+    //myStartTime = getTimer();
+    myStartTime = new Date().getTime();
+    timeMultiple = 0;
+
+    //NM: hide drag label
+    $(".weightDispText").text("0 (cm)").hide()
+    $(this).draggable('disable')
+    $(".stopDiv").show();
+    springAnnimInterval = setInterval(OnSpringAnnimation, 100)
+  }
+});
+
+
+var myMass = 0.5;
+var myElasticity = 3;
+var myConstant = 3;
+//var w;
+var myDamping = 0;
+var myStartTime = new Date().getTime();
+var t = 0;
+var k = 0;
+var fade = true;
+var fade2 = true;
+var timeMultiple = 0;
+var Xvalue = 0;
+var Xvalue2 = 15;
+var myAmplitude = 0;
+var springAnnimInterval = 0;
+
+
+
+function OnSpringAnnimation() {
+  //debugger;
+  //trace("value="+cVolml_mc.m1);
+  myMass = Number($("#sliderMass").val());
+  myElasticity = Number($("#sliderSpringConstant").val());
+  $(".inputTimePeriod").text(((2 * Math.PI) * Math.sqrt((myMass / myElasticity))).toFixed(1));
+  //
+  //_root.TimePeriod_txt.text = Display_mc.timeperiod_txt.text;
+  //
+  //myDamping = T1_mc.T1;
+  myDamping = Number($("#sliderDamping").val());
+  //position = Mass_mc.block_mc._y;
+  var position = $(".springWeight").position().top - weightInitialTop
+  myConstant = Math.sqrt(myElasticity / myMass);
+  tmilli = (new Date().getTime() - myStartTime)
+  t = tmilli / 1000;
+
+  var tPlot = tmilli - (timeMultiple * 15000);
+  if (tPlot > 15000) {
+    //graph_num.num1.text = graph_num.num1+30;
+    //graph_num.num2.text = graph_num.num2+30;
+    Xvalue = Xvalue + 15;
+    Xvalue2 = Xvalue2 + 15;
+    //NM: Note below line
+    //graph_num.num1.text = "(" + Xvalue + "," + 0 + ")";
+    //graph_num.num2.text = "(" + Xvalue2 + "," + 0 + ")";
+    $(".x-axis-minlimit").text(Xvalue * 10)
+    $(".x-axis-maxlimit").text(Xvalue2 * 10)
+    timeMultiple++
+    //k = 0;
+    fade = true;
+    //graph_mc.clear();
+    SpringOscillationChart.clearSeriesData();
+    tPlot = tmilli - (timeMultiple * 15000);
+    //trace("kavlue="+k);
+  }
+  //trace("Time = " + t);
+  var w = myConstant * t;
+  var Dis = (myAmplitude * Math.cos(w)) * (Math.exp(-myDamping * t));
+  //console.log("Dis" + Dis)
+  //Mass_mc.block_mc._y = Dis;
+  $(".springWeight").css({ "top": weightInitialTop + Dis })
+  //displacementMass = Mass_mc.block_mc._y;
+  //displacementMass = $(".springWeight").position().top;
+  //displacementMass = ($(".springWeight").position().top - weightInitialTop)
+  //trace("displacementMass = " + displacementMass);
+  //spring_mc._height = (massAnchor + displacementMass) - offsetY;
+  $(".springWrapper").css({ "height": springOrigHeight + Dis })
+  //spring_mc._height = 200+Mass_mc.block_mc._y;
+  SpringOscillationChart.update({ x: (tPlot / 1000), y: Number(Dis.toFixed(2)) / 2 })
+
+  //if (k < 300) {
+  //DrawLine(position, tPlot / 50, Dis);
+  //trace(tPlot);
+  //k++;
+  //trace("kavlue="+k);
+  //}
+}
 
 
 
