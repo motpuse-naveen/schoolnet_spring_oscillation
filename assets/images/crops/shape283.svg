@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:author="http://www.sothink.com" version="1.1" id="Layer_1" width="450px" height="470px" xml:space="preserve">
+    <g id="79" transform="matrix(1, 0, 0, 1, 229.3, 233.6)">
+        <path style="fill:#FFFFD6;fill-opacity:1" d="M72,-203.1L144 -203.1L221.2 -203.1L221.2 -203.05L221.25 -88.95L221.25 217.8L221.25 219L221.25 220.15L221.2 220.15L221.2 226.85L-228.8 226.85L-228.8 -203.1L-228.75 -203.1L72 -203.1"/>
+        <linearGradient id="LinearGradID_71" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0, 0.0183105, -0.244141, 0, 21.2, -218.1)" spreadMethod="pad" x1="-819.2" y1="0" x2="819.2" y2="0">
+            <stop offset="0" style="stop-color:#FFFF99;stop-opacity:1"/>
+            <stop offset="0.372549" style="stop-color:#FFCC00;stop-opacity:1"/>
+            <stop offset="0.713725" style="stop-color:#FFFF33;stop-opacity:1"/>
+            <stop offset="1" style="stop-color:#CC9900;stop-opacity:1"/>
+        </linearGradient>
+        <path style="fill:url(#LinearGradID_71) " d="M144,-203.1L144 -233.1L221.2 -233.1L221.2 -203.1L144 -203.1"/>
+        <linearGradient id="LinearGradID_72" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0, 0.0183105, -0.244141, 0, 41.2, -218.1)" spreadMethod="pad" x1="-819.2" y1="0" x2="819.2" y2="0">
+            <stop offset="0" style="stop-color:#FFFF99;stop-opacity:1"/>
+            <stop offset="0.372549" style="stop-color:#FFCC00;stop-opacity:1"/>
+            <stop offset="0.713725" style="stop-color:#FFFF33;stop-opacity:1"/>
+            <stop offset="1" style="stop-color:#CC9900;stop-opacity:1"/>
+        </linearGradient>
+        <path style="fill:url(#LinearGradID_72) " d="M72,-203.1L72 -233.1L144 -233.1L144 -203.1L72 -203.1"/>
+        <linearGradient id="LinearGradID_73" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0, 0.0183105, -0.244141, 0, -28.8, -218.1)" spreadMethod="pad" x1="-819.2" y1="0" x2="819.2" y2="0">
+            <stop offset="0" style="stop-color:#FFFF99;stop-opacity:1"/>
+            <stop offset="0.372549" style="stop-color:#FFCC00;stop-opacity:1"/>
+            <stop offset="0.713725" style="stop-color:#FFFF33;stop-opacity:1"/>
+            <stop offset="1" style="stop-color:#CC9900;stop-opacity:1"/>
+        </linearGradient>
+        <path style="fill:url(#LinearGradID_73) " d="M-228.75,-203.1L-228.8 -203.1L-228.8 -233.1L72 -233.1L72 -203.1L-228.75 -203.1"/>
+
+    </g>
+</svg>

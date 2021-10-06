@@ -10,6 +10,11 @@
 }
 
 @font-face {
+  font-family: 'Trebuchet1';
+  src: local('fonts/trebuc.woff'), url('fonts/trebuc.woff');
+}
+
+@font-face {
   font-family: 'ArialBold';
   src: local('fonts/6_Arial.ttf'), url('fonts/6_Arial.ttf');
 }
@@ -17,6 +22,11 @@
 @font-face {
   font-family: 'TrebuchetBold';
   src: local('fonts/9_Trebuchet MS.ttf'), url('fonts/9_Trebuchet MS.ttf');
+}
+
+@font-face {
+  font-family: 'Digital';
+  src: local('fonts/198_Digital Readout ExpUpright.ttf'), url('fonts/198_Digital Readout ExpUpright.ttf');
 }
 
 html, body {
@@ -60,41 +70,56 @@ html, body {
 
 #logo {
   position: absolute;
-  width: 100px;
-  height: 24px;
-  top: 3px;
+  width: 108px;
+  height: 18px;
+  padding: 5px;
+  top: 6px;
   right: 39px;
+  background: white;
 }
 
 #logoImg {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 91%;
 }
 
 #closeBtn {
   position: absolute;
-  width: 34px;
-  height: 39px;
-  top: 2px;
-  right: 5px;
-  cursor: pointer;
-  background: url(../images/10.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  width: 30px;
+  height: 37px;
+  left: 962px;
   cursor: pointer;
 }
 
-#closeBtn:hover {
+.closeBtn1 {
   position: absolute;
-  width: 34px;
-  height: 39px;
+  top: 28px;
+  left: 1px;
+  color: white;
+  font-size: 10px;
+  font-family: sans-serif;
+  pointer-events: none;
+}
+
+.closeImg {
+  position: absolute;
+  width: 24px;
+  height: 25px;
   top: 2px;
-  right: 5px;
-  background: url(../images/11.png);
+  left: 2px;
+  background: url(../images/closeB.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  cursor: pointer;
+}
+
+#closeBtn:hover .closeImg {
+  background: url(../images/closeA.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#closeBtn:hover .closeBtn1 {
+  color: red;
 }
 
 #topmenubar2 {
@@ -138,7 +163,7 @@ html, body {
 
 .copyRight {
   position: absolute;
-  bottom: 9px;
+  bottom: 0px;
   font-family: Arial;
   font-size: 12px;
   right: 6px;
@@ -217,6 +242,7 @@ html, body {
   font-family: Arial;
   font-weight: bold;
   color: #000000;
+  line-height: 18px;
 }
 
 .workSheetDiv {
@@ -246,7 +272,7 @@ html, body {
 .workSheetContent {
   position: absolute;
   width: 258px;
-  height: 430px;
+  height: 445px;
   top: 122px;
   left: 5px;
   border: 1px solid black;
@@ -262,6 +288,7 @@ html, body {
   /* font-weight: bold; */
   color: #000033;
   padding-right: 15px;
+  line-height: 18px;
 }
 
 b {
@@ -404,13 +431,36 @@ b {
   text-align: left;
   display: none;
 }
-.procedSteps p{
+
+.procedSteps p {
   margin-bottom: 0px;
 }
 
 .procdClick {
   position: absolute;
   right: 0;
+}
+
+.procedureOver {
+  position: absolute;
+  right: 5px;
+  background-image: url(../images/crops/shape280.svg);
+  font-size: 13px;
+  /* width: 80px; */
+  text-align: center;
+  padding-top: 4px;
+  padding-right: 4px;
+}
+
+.procopentxt {
+  display: none;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'Trebuchet';
+  color: #333333;
+  cursor: pointer;
+  padding: 2px;
+  padding-bottom: 0px;
 }
 
 .mainProcdiv {
@@ -425,7 +475,7 @@ b {
   left: 4px;
   opacity: 0.5;
   pointer-events: none;
-  background: url(../images/procPrev.png);
+  background: url(../images/crops/shape264.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
@@ -437,7 +487,7 @@ b {
   height: 18px;
   bottom: 4px;
   right: 4px;
-  background: url(../images/procdnext.png);
+  background: url(../images/crops/shape266.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
@@ -445,19 +495,21 @@ b {
 
 .showObj {
   position: absolute;
-  width: 100px;
+  width: 120px;
   height: 21px;
   bottom: 32px;
-  left: 135px;
+  left: 115px;
+  border: 1px solid #FFCF02;
+  border-radius: 15px;
 }
 
 .showObjTxt {
   position: absolute;
-  font-size: 10px;
+  font-size: 12px;
   bottom: 35px;
   right: 12px;
   font-weight: bold;
-  font-family: 'Trebuchet';
+  /*font-family: 'Trebuchet MS';*/
   color: #333333;
   pointer-events: none;
 }
@@ -531,14 +583,30 @@ b {
 
 .divrangestart {
   position: absolute;
-  left: 0;
-  top: -20px;
+  left: -3px;
+  top: -25px;
 }
 
 .divrangeend {
   position: absolute;
+  right: -3px;
+  top: -25px;
+}
+.divrangestartvline{
+  position: absolute;
+  left: 0;
+  top: -6px;
+  width: 1px;
+  height: 5px;
+  background-color: black;
+}
+.divrangeendvline{
+  position: absolute;
   right: 0;
-  top: -20px;
+  top: -6px;
+  width: 1px;
+  height: 5px;
+  background-color: black;
 }
 
 .inputwrap {
@@ -560,57 +628,64 @@ b {
 
 input[type="range"] {
   -webkit-appearance: none;
-  /*margin-right: 15px;
-  width: 200px;*/
-  height: 5px;
+  height: 4px;
   background: #9ba8ae;
   border-radius: 5px;
   background-image: linear-gradient(#cb8e0b, #cb8e0b);
   background-size: 70% 100%;
   background-repeat: no-repeat;
   border: 1px solid #000000;
+  margin-right: -1px;
 }
 
 /* Input Thumb */
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  /*background: #ff4500;*/
-  background-image: url(../images/crops/green_btn.png);
+  background: green;
+  background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  transform: scale(1.33);
 }
 
 input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  background-image: url(../images/crops/green_btn.png);
+  background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  transform: scale(1.33);
 }
 
 input[type="range"]::-ms-thumb {
   -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  background-image: url(../images/crops/green_btn.png);
+  background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: ew-resize;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  transform: scale(1.33);
 }
+
 /*
 input[type="range"]::-webkit-slider-thumb:hover {
   background: #ff0200;
@@ -624,8 +699,10 @@ input[type="range"]::-ms-thumb:hover {
   background: #ff0200;
 }
 */
+
 /* Input Track */
-input[type=range]::-webkit-slider-runnable-track  {
+
+input[type=range]::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   box-shadow: none;
   border: none;
@@ -645,6 +722,7 @@ input[type="range"]::-ms-track {
   border: none;
   background: transparent;
 }
+
 /*End*/
 
 .springCanvas {
@@ -652,32 +730,38 @@ input[type="range"]::-ms-track {
   top: -30px;
   left: 28px;
 }
-.springholder{
+
+.springholder {
   height: 42px;
 }
+
 .springImage {
   width: 56px;
   height: 100%;
   margin: 0px 46px;
 }
-.springWrapper{
+
+.springWrapper {
   height: 200px;
   margin-top: -9px;
 }
-.springWeight{
+
+.springWeight {
   height: 62px;
   width: 57px;
   position: absolute;
   top: 232px;
   left: 45px;
 }
-.weightImage{
+
+.weightImage {
   margin-top: -8px;
 }
-.weightDispText{
+
+.weightDispText {
   position: absolute;
   left: 65px;
-  top:30px;
+  top: 30px;
   color: #007bff;
 }
 
@@ -690,56 +774,71 @@ input[type="range"]::-ms-track {
   border: 2px solid #80542a;
   left: 11%;
   top: 21%;
-  box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
--webkit-box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 115px 32px rgba(0,0,0,0.75);
-display: none;
+  box-shadow: 0px 0px 115px 32px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 115px 32px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 115px 32px rgba(0, 0, 0, 0.75);
+  display: none;
+  background-image: url(../images/crops/shape283.svg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .squarerootbar {
   border-top: 1px solid;
 }
 
-.calculatePopup .title, .calculatePopup .body {
-  padding: 10px 60px;
+.calculatePopup .title{
+  padding: 10px 70px;
+}
+.calculatePopup .body {
+  padding: 10px 35px;
 }
 
 .calculatePopup .title {
-  background-image: url(../images/crops/shape236.svg);
+  /*background-image: url(../images/crops/shape236.svg);
   background-repeat: no-repeat;
   background-size: 111% 100%;
   border-bottom: 2px solid #80542a;
+  */
 }
 
-.calculatePopup .titleIcon{
+.calculatePopup .titleIcon {
   position: absolute;
-  top: 0;
-  left: 5px;
+  top: -3px;
+    left: -1px;
 }
-.calculatePopup .popupcloseIcon{
+.calculatePopup .titleIcon img{
+  width: 63px;
+}
+
+.calculatePopup .popupcloseIcon {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
 }
 
-.springTest{
+.springTest {
   position: absolute;
   background-color: #fff;
-  top:100px;
+  top: 100px;
   left: 100px;
   z-index: 100;
-
 }
 
-.graphDisplacementVsTime{
+.graphDisplacementVsTime {
   position: absolute;
-  left: 200px;
+  left: 192px;
   top: 30px;
 }
+
 .highcharts-background {
   fill: transparent !important;
 }
+
 .gradientyAxis {
   position: absolute;
   width: 35px;
@@ -749,40 +848,56 @@ display: none;
   border-right: 1px solid #000;
   background-image: linear-gradient(to left, #cee685, #d4e799, #dae9ac, #e0eabf, #e5ebd2);
 }
-.xAxisLine{
+
+.xAxisLine {
   position: absolute;
   width: 83%;
   top: 173px;
-  left: 69px;
-  height: 1px;
+  left: 71px;
+  height: 2px;
   background-color: #000;
 }
-.top-arrow, .down-arrow, .right-arrow{
+.yAxisLine{
   position: absolute;
-  width: 11px;
+    width: 2px;
+    height: 100%;
+    background-color: #000;
+    left: 70px;
+    top: 0px;
 }
-.top-arrow{
-  left: 64px;
-  top: -8px;
+
+.top-arrow, .down-arrow, .right-arrow {
+  position: absolute;
+  width: 10px;
 }
-.down-arrow{
-  left:64px;
-  bottom:-8px;
+
+.top-arrow {
+  left: 66px;
+    top: -5px;
 }
-.right-arrow{
+
+.down-arrow {
+  left: 66px;
+    bottom: -5px;
+}
+
+.right-arrow {
   right: 2px;
   top: 168px;
 }
-.x-axis-text{
+
+.x-axis-text {
   position: absolute;
-  right: -57px;
-  top: 167px;
-  font-size: 12px;
-  width: 60px;
+  right: -73px;
+  top: 165px;
+  width: 75px;
   text-align: center;
   color: #7f542a;
+  font-size: 14px;
+  font-weight: bold;
 }
-.x-axis-minlimit{
+
+.x-axis-minlimit {
   position: absolute;
   left: -13px;
   top: 167px;
@@ -790,21 +905,38 @@ display: none;
   width: 60px;
   text-align: center;
 }
-.x-axis-minlimit-hider{
+
+.x-axis-minlimit-hider {
   position: absolute;
-    left: 38px;
-    top: 167px;
-    font-size: 12px;
-    width: 20px;
-    height: 16px;
-    text-align: center;
-  background-image: linear-gradient(to left, #cee685, #d4e799, #dae9ac, #e0eabf, #e5ebd2);
+  left: 41px;
+  top: 167px;
+  width: 28px;
+  height: 20px;
+  background-image: url(../images/crops/shape194.svg);
 }
-.x-axis-maxlimit{
+
+.x-axis-maxlimit {
   position: absolute;
-    right: -57px;
-    top: 185px;
-    font-size: 12px;
-    width: 60px;
-    text-align: center;
+  right: -57px;
+  top: 185px;
+  font-size: 12px;
+  width: 60px;
+  text-align: center;
+}
+.alnr{
+  text-align: right;
+}
+.inputlabel{
+  position: absolute;
+    top: 12px;
+    right: -30px;
+}
+
+.myChartBG {
+  position: absolute;
+    width: 30px;
+    height: 338px;
+    bottom: 8px;
+    left: 43px;
+    background-image: url(../images/crops/shape194.svg);
 }

@@ -29,17 +29,17 @@
       </script>
       <div id="topmenubar">
          <div id="logo">
-            <img id="logoImg" src="assets/images/1349.png">
+            <img id="logoImg" src="assets/images/343.png">
          </div>
          <div id="closeBtn">
-            <!-- <div id="closeBtnImg"></div>
-            <p id="closeBtnText">Close</p> -->
+            <div class="closeBtn1">Close</div>
+            <div class="closeImg"></div>
          </div>
 
       </div>
       <div id="topmenubar2">
          <div id="contentTittle">
-            <p class="titleName">Spring Oscillation - Experimental Verification of Time Period</p>
+            <p class="titleName">Spring Oscillation &ndash; Experimental Verification of Time Period</p>
          </div>
       </div>
 
@@ -63,11 +63,13 @@
                   <div class="sliderContainer">
                      <table>
                         <tr>
-                           <td class="section_mass">Mass</td>
+                           <td class="section_mass alnr">Mass</td>
                            <td class="section_mass">
                               <div class="rangeWrapdiv relativediv">
                                  <div class="divrangestart">0.1</div>
                                  <div class="divrangeend">1</div>
+                                 <div class="divrangestartvline"></div>
+                                 <div class="divrangeendvline"></div>
                                  <input class="slider" type="range" id="sliderMass" name="mass" min="0.1" max="1"
                                     step="0.1" value="0.5" style="background-size: 44.4444% 100%;">
                               </div>
@@ -84,8 +86,10 @@
                               <div class="rangeWrapdiv relativediv">
                                  <div class="divrangestart">1</div>
                                  <div class="divrangeend">5</div>
+                                 <div class="divrangestartvline"></div>
+                                 <div class="divrangeendvline"></div>
                                  <input class="slider" type="range" id="sliderSpringConstant" name="springconstant"
-                                    min="1" max="5" step="1" value="3" style="background-size: 50% 100%;">
+                                    min="1" max="5" step="0.1" value="3" style="background-size: 50% 100%;">
                               </div>
                            </td>
                            <td class="section_sc">
@@ -96,11 +100,13 @@
                            </td>
                         </tr>
                         <tr>
-                           <td class="section_damp">Damping</td>
+                           <td class="section_damp alnr">Damping</td>
                            <td class="section_damp">
                               <div class="rangeWrapdiv relativediv">
                                  <div class="divrangestart">0</div>
                                  <div class="divrangeend">0.5</div>
+                                 <div class="divrangestartvline"></div>
+                                 <div class="divrangeendvline"></div>
                                  <input class="slider" type="range" id="sliderDamping" name="damping" min="0"
                                     max="0.5" step="0.1" value="0" style="background-size: 0% 100%;">
                               </div>
@@ -112,12 +118,12 @@
                            </td>
                            <td>&nbsp;</td>
                            <td class="section_tp">Time Period</td>
-                           <td class="section_tp">
+                           <td colspan="2" class="section_tp">
                               <div class="relativediv inputwrap">
                                  <div class="input_box inputTimePeriod"></div>
-                              </div> Sec
+                                 <span class="inputlabel">Sec</span>
+                              </div> 
                            </td>
-                           <td></td>
                         </tr>
                      </table>
                   </div>
@@ -136,8 +142,9 @@
                   </div>
                </div>
                <div class="graphDisplacementVsTime">
-                  <div class="gradientyAxis"></div>
+                  <div class="myChartBG"></div>
                   <div id="myChart"></div>
+                  <div class="yAxisLine"></div>
                   <div class="xAxisLine"></div>
                   <img class="down-arrow" src="assets/images/crops/down-arrow.png">
                   <img class="top-arrow" src="assets/images/crops/top-arrow.png">
@@ -159,7 +166,7 @@
                         <p><b>Spring & Bob</b></p>
                         <p>A bob attached to a spring and displaced from its mean position will oscillate top to bottom in the vertical direction. This type of motion is known as Simple Harmonic Motion.</p>
                         <p><b>Amplitude:</b> The maximum displacement of the bob from the mean position (centre) towards one side is known as its Amplitude.</p>
-                        <p><b>Time Period:</b> The time taken by bob to complete one oscillation (from one extreme position to the other) is known as the Time Period and is usually measured in seconds.</p>
+                        <p><b>Time Period - </b> The time taken by bob to complete one oscillation (from one extreme position to the other) is known as the Time Period and is usually measured in seconds.</p>
                         <p><b>Simple Harmonic Motion</b></p>
                         <p>Oscillatory motion is also known as periodic motion because of its repetitive nature and is either in form of circular motion or as wave motion. The simplest type of oscillatory motion is the simple harmonic motion (SHM). A body or an object is said to be in simple harmonic motion when the force that tries to restore the object to its rest position is proportional to the displacement of the object. The force, which tries to restore the object to its original position or equilibrium, is termed as the restoring force.</p>
                         <p>If the displacement of the body in SHM is plotted over time, we get a Sine curve.</p>
@@ -186,6 +193,10 @@
                </div>
                <div class="procedureDiv">
                   <img class="procdClick" src="assets/images/procdClick.png">
+                  <div class="procedureOver">
+                     <div>Procedure</div>
+                     <div class="procopentxt">OPEN</div>
+                  </div>
                   <img class="procdAnim" src="assets/images/procedure.gif" />
                   <div class="mainProcdiv">
                      <span class="procdNum">1)</span>
@@ -218,7 +229,7 @@
             <div class="calculatePopup">
                <div class="titleIcon"><img src="assets/images/crops/calculator.png"></div>
                <div class="popupcloseIcon"><img src="assets/images/crops/shape315.svg"></div>
-               <div class="title">calculations</div>
+               <div class="title">Calculations</div>
                <div class="body">
                   <p>Note: The calculations given below are applicable only for zero damping</p>
                   <p>Amplitude (A) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m</p>

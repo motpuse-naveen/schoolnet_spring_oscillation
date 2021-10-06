@@ -40,6 +40,7 @@ function OpenWord() {
 //Worksheet Func ends
 
 $(document).ready(function () {
+  InitBrowserAttribute();
   showSlides(slideIndex);
   SpringOscillationChart.init([{ "x": 0, "y": 0 }]);
 });
@@ -83,16 +84,19 @@ $('.closeProcd').on('mouseout', function () {
   $('.closeProcd').attr('src', 'assets/images/closeUp.png');
 });
 
-$('.procdClick').on('mouseover', function () {
+$('.procdClick, .procopentxt').on('mouseover', function () {
   $('.procdClick').attr('src', 'assets/images/procdHover.gif');
   $('.procdClick').css('cursor', 'pointer');
+  $(".procopentxt").addClass("show")
 });
-$('.procdClick').on('mouseout', function () {
+$('.procdClick, .procopentxt').on('mouseout', function () {
   $('.procdClick').attr('src', 'assets/images/procdClick.png');
+  $(".procopentxt").removeClass("show")
 });
 
-$('.procdClick').on('click', function () {
-  $(this).css('display', 'none');
+$('.procdClick,.procopentxt').on('click', function () {
+  $('.procdClick').css('display', 'none');
+  $(".procopentxt").removeClass("show")
   $('.procdAnim').attr('src', 'assets/images/procedure.gif').css('display', 'block');
   setTimeout(() => {
     $('.mainProcdiv').css('display', 'block');
@@ -238,7 +242,7 @@ $(".springWeight").draggable({
     //displacementMass = ui.position.top;
     displacementMass = (ui.position.top - weightInitialTop)
     //
-    $(".weightDispText").text((displacementMass / 2) + "" + "(cm)").show();
+    $(".weightDispText").text(Number(toTrunc((displacementMass / 2),2)) + "" + "cm").show();
     //
     //Display_mc.Amp_txt.text = (displacementMass/2);
     //
@@ -333,7 +337,8 @@ function OnSpringAnnimation() {
   //spring_mc._height = (massAnchor + displacementMass) - offsetY;
   $(".springWrapper").css({ "height": springOrigHeight + Dis })
   //spring_mc._height = 200+Mass_mc.block_mc._y;
-  SpringOscillationChart.update({ x: (tPlot / 1000), y: Number(Dis.toFixed(2)) / 2 })
+  console.log((tPlot / 1000) + ", " + Number(Dis.toFixed(2)) / 2)
+  SpringOscillationChart.update({ x: (tPlot / 1000), y: (Number(Dis.toFixed(2)) / 2)*-1 })
 
   //if (k < 300) {
   //DrawLine(position, tPlot / 50, Dis);
@@ -341,6 +346,11 @@ function OnSpringAnnimation() {
   //k++;
   //trace("kavlue="+k);
   //}
+}
+
+function toTrunc(value,n){
+  x=(value.toString()+".0").split(".");
+  return parseFloat(x[0]+"."+x[1].substr(0,n));
 }
 
 

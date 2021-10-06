@@ -41,7 +41,9 @@ var SpringOscillationChart = (function () {
                         text: 'Displacement (cm)',
                         align: 'high',
                         style:{
-                            color:"#447215"
+                            color:"#447215",
+                            fontSize: '14px',
+                            fontWeight: 'bold'
                         }
                     },
                     min:-70,
@@ -64,7 +66,7 @@ var SpringOscillationChart = (function () {
                 },
                 series: [{
                     name: "",
-                    color:"#0000ff",
+                    color:"#0505ff",
                     marker: {
                         enabled: false
                      },
@@ -83,3 +85,49 @@ var SpringOscillationChart = (function () {
         }
     }
 })();
+
+
+function InitBrowserAttribute() {
+		
+    // Get the user-agent string
+    let userAgentString =
+        navigator.userAgent;
+
+    let browserStr = "";
+
+    // Detect Chrome
+    let chromeAgent =
+        userAgentString.indexOf("Chrome") > -1;
+
+    // Detect Internet Explorer
+    let IExplorerAgent =
+        userAgentString.indexOf("MSIE") > -1 ||
+        userAgentString.indexOf("rv:") > -1;
+
+    // Detect Firefox
+    let firefoxAgent =
+        userAgentString.indexOf("Firefox") > -1;
+
+    // Detect Safari
+    let safariAgent =
+        userAgentString.indexOf("Safari") > -1;
+        
+    // Discard Safari since it also matches Chrome
+    if ((chromeAgent) && (safariAgent))
+        safariAgent = false;
+
+    // Detect Opera
+    let operaAgent =
+        userAgentString.indexOf("OP") > -1;
+        
+    // Discard Chrome since it also matches Opera	
+    if ((chromeAgent) && (operaAgent))
+        chromeAgent = false;
+
+    if (safariAgent) browserStr = "safari"
+    else if(chromeAgent) browserStr = "chrome"
+    else if(firefoxAgent) browserStr = "firefox"
+    else if (IExplorerAgent) browserStr = "IE"
+
+    $("body").attr("browser", browserStr);
+}
