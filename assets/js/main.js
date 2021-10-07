@@ -252,7 +252,6 @@ var displacementMass = 0;
 $(".springWeight").draggable({
   axis: "y",
   cursor: "move",
-  grid:[1,1],
   drag: function (event, ui) {
     //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
     //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
