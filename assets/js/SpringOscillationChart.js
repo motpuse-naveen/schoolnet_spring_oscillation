@@ -159,7 +159,13 @@ var isMobile = {
         return navigator.userAgent.match(/BlackBerry/i);
     },
     iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+            return true;
+          } else {
+            return navigator.maxTouchPoints &&
+              navigator.maxTouchPoints > 2 &&
+              /MacIntel/.test(navigator.platform);
+          }
     },
     Opera: function () {
         return navigator.userAgent.match(/Opera Mini/i);
@@ -168,16 +174,20 @@ var isMobile = {
         return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
     },
     any: function () {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS());
     },
     InitDeviceAttribute: function () {
+        var debugStr = 'media';
         if (isMobile.any()) {
             $("body").attr("devicetype", "tablet");
+            debugStr = debugStr + " - " + "tablet"
             if (isMobile.Android()) {
                 $("body").attr("device", "android");
+                debugStr = debugStr + " - " + "android"
             }
             else if (isMobile.iOS()) {
                 $("body").attr("device", "ipad");
+                debugStr = debugStr + " - " + "ipad"
             }
         }
     }

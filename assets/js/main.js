@@ -201,7 +201,7 @@ $('.stopDiv').on('click', function () {
 });
 $(".calculateDiv").on('click', function () {
   $(".calculatePopup").show();
-  $(".txtamplitude").text(toTrunc(myAmplitude/2,2))
+  $(".txtamplitude").text(Math.abs(Number(toTrunc(myAmplitude/2.10,3))))
   $(".txtmass").text(myMass)
   $(".txtspringconst").text($("#sliderSpringConstant").val())
   var tplocal =toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),2);
@@ -244,17 +244,17 @@ $(".springWeight").draggable({
   drag: function (event, ui) {
     //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
     //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
-    if (ui.position.top < Math.max(112, ui.position.top)) {
-      ui.position.top = Math.max(112, ui.position.top);
+    if (ui.position.top < Math.max(106, ui.position.top)) {
+      ui.position.top = Math.max(106, ui.position.top);
     }
-    if (ui.position.top > Math.min(352, ui.position.top)) {
-      ui.position.top = Math.min(352, ui.position.top);
+    if (ui.position.top > Math.min(358, ui.position.top)) {
+      ui.position.top = Math.min(358, ui.position.top);
     }
 
     //displacementMass = ui.position.top;
     displacementMass = (ui.position.top - weightInitialTop)
     //
-    $(".weightDispText").text(Number(toTrunc((displacementMass / 2), 2)) + "" + "cm").show();
+    $(".weightDispText").text(Math.abs(Number(toTrunc((displacementMass / 2.10), 3))) + "" + "cm").show();
     //
     //Display_mc.Amp_txt.text = (displacementMass/2);
     //
@@ -278,7 +278,7 @@ $(".springWeight").draggable({
     $(this).draggable('disable')
     $(".stopDiv").show();
     //console.log(myAmplitude);
-    SpringOscillationChart.update({ x: 0, y: myAmplitude/2 * -1 })
+    SpringOscillationChart.update({ x: 0, y: myAmplitude/2.10 * -1 })
     springAnnimInterval = setInterval(OnSpringAnnimation, 100)
   }
 });
@@ -352,7 +352,7 @@ function OnSpringAnnimation() {
   $(".springWrapper").css({ "height": springOrigHeight + Dis })
   //spring_mc._height = 200+Mass_mc.block_mc._y;
   //console.log((tPlot / 1000) + ", " + Number(Dis.toFixed(2)) / 2)
-  SpringOscillationChart.update({ x: (tPlot / 1000), y: (Number(Dis.toFixed(2)) / 2) * -1 })
+  SpringOscillationChart.update({ x: (tPlot / 1000), y: (Number(Dis.toFixed(2)) / 2.10) * -1 })
 
   //if (k < 300) {
   //DrawLine(position, tPlot / 50, Dis);

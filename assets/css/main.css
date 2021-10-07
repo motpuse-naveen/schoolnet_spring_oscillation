@@ -624,6 +624,7 @@ b {
   padding: 12px 0px;
   width: 100%;
   text-align: center;
+  font-weight: bold;
 }
 
 /*Slider CSS*/
@@ -754,6 +755,7 @@ input[type="range"]::-ms-track {
   position: absolute;
   top: 232px;
   left: 45px !important;
+  cursor: pointer;
 }
 
 .weightImage {
@@ -980,9 +982,9 @@ input[type="range"]::-ms-track {
   margin-top: 0;
 }
 .spancalculate{
-  color:#7f542a;
+  color:#8d4237;
   text-align: center;
-  min-width: 40px;
+  min-width: 50px;
   display: inline-block;
 }
 
@@ -999,4 +1001,19 @@ body[devicetype='tablet'] .xAxisLine{
 }
 body[devicetype='tablet'] .y-axis-text{
   left: -52px;
+}
+
+body[devicetype='tablet'][device='ipad'] .myChartBG{
+  left: 33px;
+  left: 38px;
+}
+
+body[devicetype='tablet'][device='ipad'] .myChartBGAxis{
+  left: 67px;
+}
+body[devicetype='tablet'][device='ipad'] .xAxisLine{
+  left: 69px;
+}
+body[devicetype='tablet'][device='ipad'] .y-axis-text{
+  left: -50px;
 }
