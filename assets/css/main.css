@@ -583,7 +583,7 @@ b {
 
 .divrangestart {
   position: absolute;
-  left: -3px;
+  left: -1px;
   top: -25px;
 }
 
@@ -595,10 +595,10 @@ b {
 
 .divrangestartvline {
   position: absolute;
-  left: 0;
+  left: 2px;
   top: -6px;
-  width: 1px;
-  height: 5px;
+  width: 2px;
+  height: 4px;
   background-color: black;
 }
 
@@ -606,8 +606,8 @@ b {
   position: absolute;
   right: 0;
   top: -6px;
-  width: 1px;
-  height: 5px;
+  width: 2px;
+  height: 4px;
   background-color: black;
 }
 
@@ -644,8 +644,8 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
+  height: 5px;
+  width: 5px;
   border-radius: 50%;
   background: green;
   background-image: url(../images/crops/shape175.svg);
@@ -655,13 +655,13 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  transform: scale(1.33);
+  transform: scale(4.2);
 }
 
 input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
+  height: 5px;
+  width: 5px;
   border-radius: 50%;
   background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
@@ -670,13 +670,13 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  transform: scale(1.33);
+  transform: scale(4.2);
 }
 
 input[type="range"]::-ms-thumb {
   -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
+  height: 5px;
+  width: 5px;
   border-radius: 50%;
   background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
@@ -685,7 +685,7 @@ input[type="range"]::-ms-thumb {
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  transform: scale(1.33);
+  transform: scale(4.2);
 }
 
 /*
@@ -939,7 +939,7 @@ input[type="range"]::-ms-track {
 
 .x-axis-minlimit {
   position: absolute;
-    left: -80px;
+    left: -75px;
     top: -5px;
     font-size: 12px;
     width: 60px;
