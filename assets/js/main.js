@@ -201,15 +201,24 @@ $('.stopDiv').on('click', function () {
 });
 $(".calculateDiv").on('click', function () {
   $(".calculatePopup").show();
-  $(".txtamplitude").text(Math.abs(Number(toTrunc(myAmplitude/2.10,3))))
+  $(".txtamplitude").text(Math.abs(Number(toTrunc(myAmplitude / 2.10, 3))))
   $(".txtmass").text(myMass)
   $(".txtspringconst").text($("#sliderSpringConstant").val())
-  var tplocal =toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),2);
+  var tplocal = toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)), 2);
   $(".txttimeperiod").text(tplocal)
 });
 $(".popupcloseIcon").on('click', function () {
   $(".calculatePopup").hide();
 })
+$(".springWeight").on('mousedown', function () {
+  var displacementMass = $(".springWeight").position().top - weightInitialTop
+  var lval =Math.abs(Number(toTrunc((displacementMass / 2.10), 3)))
+  $(".weightDispText").text(lval + "cm").show();
+});
+$(".springWeight").on('mouseup', function () {
+  $(".weightDispText").hide();
+});
+
 
 const rangeInputs = document.querySelectorAll('input[type="range"]')
 //const numberInput = document.querySelector('input[type="number"]')
@@ -263,6 +272,7 @@ $(".springWeight").draggable({
   },
   start: function (event, ui) {
     //$(this).addClass('my_class');
+    $(".weightDispText").text("0cm").show();
   },
   stop: function (event, ui) {
     //$(this).removeClass('my_class');
@@ -278,7 +288,7 @@ $(".springWeight").draggable({
     $(this).draggable('disable')
     $(".stopDiv").show();
     //console.log(myAmplitude);
-    SpringOscillationChart.update({ x: 0, y: myAmplitude/2.10 * -1 })
+    SpringOscillationChart.update({ x: 0, y: myAmplitude / 2.10 * -1 })
     springAnnimInterval = setInterval(OnSpringAnnimation, 100)
   }
 });
@@ -307,7 +317,7 @@ function OnSpringAnnimation() {
   //trace("value="+cVolml_mc.m1);
   myMass = Number($("#sliderMass").val());
   myElasticity = Number($("#sliderSpringConstant").val());
-  $(".inputTimePeriod").text(toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),1));
+  $(".inputTimePeriod").text(toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)), 1));
   //
   //_root.TimePeriod_txt.text = Display_mc.timeperiod_txt.text;
   //
@@ -338,7 +348,7 @@ function OnSpringAnnimation() {
     //trace("kavlue="+k);
   }
   //trace("Time = " + t);
-  
+
   var w = myConstant * t;
   var Dis = (myAmplitude * Math.cos(w)) * (Math.exp(-myDamping * t));
   //console.log("Dis" + Dis)
