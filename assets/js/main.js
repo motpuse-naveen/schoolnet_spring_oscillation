@@ -211,7 +211,9 @@ $(".popupcloseIcon").on('click', function () {
   $(".calculatePopup").hide();
 })
 $(".springWeight").on('mousedown', function () {
-  var displacementMass = $(".springWeight").position().top - weightInitialTop
+  //var displacementMass = $(".springWeight").position().top - weightInitialTop
+  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px",""))
+  var displacementMass = weightTop - weightInitialTop
   var lval =Math.abs(Number(toTrunc((displacementMass / 2.10), 3)))
   $(".weightDispText").text(lval + "cm").show();
 });
@@ -250,17 +252,21 @@ var displacementMass = 0;
 $(".springWeight").draggable({
   axis: "y",
   cursor: "move",
+  grid:[1,1],
   drag: function (event, ui) {
     //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
     //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
+    
     if (ui.position.top < Math.max(106, ui.position.top)) {
       ui.position.top = Math.max(106, ui.position.top);
+      //$(".springWeight").css({"top":ui.position.top})
     }
     if (ui.position.top > Math.min(358, ui.position.top)) {
       ui.position.top = Math.min(358, ui.position.top);
     }
 
     //displacementMass = ui.position.top;
+    //var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px",""))
     displacementMass = (ui.position.top - weightInitialTop)
     //
     $(".weightDispText").text(Math.abs(Number(toTrunc((displacementMass / 2.10), 3))) + "" + "cm").show();
@@ -272,7 +278,7 @@ $(".springWeight").draggable({
   },
   start: function (event, ui) {
     //$(this).addClass('my_class');
-    $(".weightDispText").text("0cm").show();
+    //$(".weightDispText").text("0cm").show();
   },
   stop: function (event, ui) {
     //$(this).removeClass('my_class');
@@ -284,7 +290,7 @@ $(".springWeight").draggable({
     timeMultiple = 0;
 
     //NM: hide drag label
-    $(".weightDispText").text("0 (cm)").hide()
+    $(".weightDispText").text("0cm").hide()
     $(this).draggable('disable')
     $(".stopDiv").show();
     //console.log(myAmplitude);
@@ -324,7 +330,9 @@ function OnSpringAnnimation() {
   //myDamping = T1_mc.T1;
   myDamping = Number($("#sliderDamping").val());
   //position = Mass_mc.block_mc._y;
-  var position = $(".springWeight").position().top - weightInitialTop
+  //var position = $(".springWeight").position().top - weightInitialTop
+  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px",""))
+  var position = weightTop - weightInitialTop
   myConstant = Math.sqrt(myElasticity / myMass);
   tmilli = (new Date().getTime() - myStartTime)
   t = tmilli / 1000;
