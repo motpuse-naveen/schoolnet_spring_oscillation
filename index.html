@@ -137,22 +137,25 @@
                      <img class="springImage" src="assets/images/crops/spring.png">
                   </div>
                   <div class="springWeight">
-                     <img class="weightImage" src="assets/images/crops/weight.png">
+                     <img class="weightImage" src="assets/images/crops/weight_op2.png">
                      <span class="weightDispText"></span>
                   </div>
                </div>
                <div class="graphDisplacementVsTime">
-                  <div class="myChartBG"></div>
+                  <img class="myChartBG" src="assets/images/crops/Oscillation_graph-gradient.png">
                   <div id="myChart"></div>
-                  <div class="yAxisLine"></div>
-                  <div class="xAxisLine"></div>
-                  <img class="down-arrow" src="assets/images/crops/down-arrow.png">
-                  <img class="top-arrow" src="assets/images/crops/top-arrow.png">
-                  <img class="right-arrow" src="assets/images/crops/right-arrow.png">
-                  <div class="x-axis-minlimit-hider"></div>
-                  <div class="x-axis-text">Time (sec)</div>
-                  <div class="x-axis-minlimit">0</div>
-                  <div class="x-axis-maxlimit">150</div>
+                  <div class="myChartBGAxis">
+                     <img class="down-arrow" src="assets/images/crops/down-arrow.png">
+                     <img class="top-arrow" src="assets/images/crops/top-arrow.png">
+                  </div>
+                  <div class="y-axis-text">Displacement (cm)</div>
+                  <div class="xAxisLine">
+                     <img class="right-arrow" src="assets/images/crops/right-arrow.png">
+                     <div class="x-axis-text">Time (sec)</div>
+                     <div class="x-axis-minlimit">00</div>
+                     <div class="x-axis-maxlimit">150</div>
+                     <div class="x-axis-minlimit-hider"></div>
+                  </div>
                </div>
                <div class="workSheetContainer">
                   <p class="worksheetTitle">Use the worksheet provided to you, to enter readings of the experiment.</p>
@@ -163,17 +166,17 @@
                   <div class="workSheetContent">
                      <div class="workSheetText">
                         <p><b>Aim:</b> To explore oscillatory motion using spring and bob system.</p>
-                        <p><b>Spring & Bob</b></p>
+                        <p>Spring & Bob</p>
                         <p>A bob attached to a spring and displaced from its mean position will oscillate top to bottom in the vertical direction. This type of motion is known as Simple Harmonic Motion.</p>
-                        <p><b>Amplitude:</b> The maximum displacement of the bob from the mean position (centre) towards one side is known as its Amplitude.</p>
-                        <p><b>Time Period - </b> The time taken by bob to complete one oscillation (from one extreme position to the other) is known as the Time Period and is usually measured in seconds.</p>
-                        <p><b>Simple Harmonic Motion</b></p>
+                        <p>Amplitude &ndash; The maximum displacement of the bob from the mean position (centre) towards one side is known as its Amplitude.</p>
+                        <p>Time Period &ndash; The time taken by bob to complete one oscillation (from one extreme position to the other) is known as the Time Period and is usually measured in seconds.</p>
+                        <p>Simple Harmonic Motion</p>
                         <p>Oscillatory motion is also known as periodic motion because of its repetitive nature and is either in form of circular motion or as wave motion. The simplest type of oscillatory motion is the simple harmonic motion (SHM). A body or an object is said to be in simple harmonic motion when the force that tries to restore the object to its rest position is proportional to the displacement of the object. The force, which tries to restore the object to its original position or equilibrium, is termed as the restoring force.</p>
                         <p>If the displacement of the body in SHM is plotted over time, we get a Sine curve.</p>
-                        <p><b>Damped Harmonic Motion</b></p>
+                        <p>Damped Harmonic Motion</p>
                         <p>In an ideal SHM, there are no other forces except the weight and the restoring force and therefore the body can go on oscillating forever. In real life however, air resistance acts against the motion of the oscillating body eventually bringing the system into a state of equilibrium. Air is a natural damper, but there also many other ways of artificially damping a periodic motion. The damping force acts opposite to the motion of the body and therefore the amplitude of the oscillations decreases exponentially with time, eventually approaching zero. If the damping force is very great then no oscillations occur.</p>
-                        <p><b>Apparatus</b></p>
-                        <p>Springs of varying spring constants</p>
+                        <p class="headerP"><b>Apparatus</b></p>
+                        <p class="firstPmb0">Springs of varying spring constants</p>
                         <p>Bobs of varying masses</p>
                         <p>Timer</p>
                         <p>Stand</p>
@@ -187,6 +190,7 @@
                         <p>The bob starts oscillating from top to bottom in a linear direction.</p>
                         <p>Observe the characteristics of the simple harmonic motion exhibited by the oscillating spring and bob.</p>
                         <p>Repeat the experiment with different mass and spring of different spring constant values.</p>
+                        <p>&nbsp;</p>
                      </div>
                   </div>
                   <p class="copyRight">© 2019, Schoolnet India Limited</p>
@@ -232,10 +236,11 @@
                <div class="title">Calculations</div>
                <div class="body">
                   <p>Note: The calculations given below are applicable only for zero damping</p>
-                  <p>Amplitude (A) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m</p>
-                  <p>Mass (m) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kg</p>
-                  <p>Spring constant (k) = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N/m</p>
-                  <p>Time Period, T = 2&pi; <span>&#8730;</span><span class="squarerootbar"> (m / k) </span>  = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sec</p>
+                  <p>Amplitude (A) = <span class="spancalculate txtamplitude"></span>m</p>
+                  <p>Mass (m) = <span class="spancalculate txtmass"></span>kg</p>
+                  <p>Spring constant (k) = <span class="spancalculate txtspringconst"></span>N/m</p>
+                  <p>&nbsp;</p>
+                  <p>Time Period, T = 2&pi; <span>&#8730;</span><span class="squarerootbar"> (m / k) </span>  = <span class="spancalculate txttimeperiod"></span>sec</p>
                </div>
             </div>
             

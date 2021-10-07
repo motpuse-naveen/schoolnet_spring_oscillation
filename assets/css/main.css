@@ -249,7 +249,7 @@ html, body {
   position: absolute;
   width: 69px;
   height: 59px;
-  top: 52px;
+  top: 55px;
   left: 101px;
   background: url(../images/worksheet.png);
   background-repeat: no-repeat;
@@ -509,9 +509,9 @@ b {
   bottom: 35px;
   right: 12px;
   font-weight: bold;
-  /*font-family: 'Trebuchet MS';*/
   color: #333333;
   pointer-events: none;
+  padding-bottom: 1px;
 }
 
 .closeProcdAfter {
@@ -592,7 +592,8 @@ b {
   right: -3px;
   top: -25px;
 }
-.divrangestartvline{
+
+.divrangestartvline {
   position: absolute;
   left: 0;
   top: -6px;
@@ -600,7 +601,8 @@ b {
   height: 5px;
   background-color: black;
 }
-.divrangeendvline{
+
+.divrangeendvline {
   position: absolute;
   right: 0;
   top: -6px;
@@ -649,10 +651,10 @@ input[type="range"]::-webkit-slider-thumb {
   background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  cursor: ew-resize;
+  cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transform: scale(1.33);
 }
 
@@ -664,10 +666,10 @@ input[type="range"]::-moz-range-thumb {
   background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  cursor: ew-resize;
+  cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transform: scale(1.33);
 }
 
@@ -679,10 +681,10 @@ input[type="range"]::-ms-thumb {
   background-image: url(../images/crops/shape175.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  cursor: ew-resize;
+  cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transform: scale(1.33);
 }
 
@@ -784,17 +786,20 @@ input[type="range"]::-ms-track {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-weight: bold;
 }
 
 .squarerootbar {
   border-top: 1px solid;
 }
 
-.calculatePopup .title{
+.calculatePopup .title {
   padding: 10px 70px;
 }
+
 .calculatePopup .body {
   padding: 10px 35px;
+  font-size: 14px;
 }
 
 .calculatePopup .title {
@@ -808,9 +813,10 @@ input[type="range"]::-ms-track {
 .calculatePopup .titleIcon {
   position: absolute;
   top: -3px;
-    left: -1px;
+  left: -1px;
 }
-.calculatePopup .titleIcon img{
+
+.calculatePopup .titleIcon img {
   width: 63px;
 }
 
@@ -831,8 +837,9 @@ input[type="range"]::-ms-track {
 
 .graphDisplacementVsTime {
   position: absolute;
-  left: 192px;
-  top: 30px;
+    left: 192px;
+    top: 52px;
+    padding-left: 27px;
 }
 
 .highcharts-background {
@@ -849,21 +856,39 @@ input[type="range"]::-ms-track {
   background-image: linear-gradient(to left, #cee685, #d4e799, #dae9ac, #e0eabf, #e5ebd2);
 }
 
-.xAxisLine {
+.myChartBG {
   position: absolute;
-  width: 83%;
-  top: 173px;
-  left: 71px;
-  height: 2px;
-  background-color: #000;
+    width: 30px;
+    height: 310px;
+    bottom: 8px;
+    left: 41px;
 }
-.yAxisLine{
+
+.myChartBGAxis {
   position: absolute;
     width: 2px;
-    height: 100%;
-    background-color: #000;
+    height: 321px;
+    bottom: 2px;
     left: 70px;
-    top: 0px;
+    background-color: #000000;
+}
+
+.xAxisLine {
+  position: absolute;
+    width: 360px;
+    top: 158px;
+    left: 72px;
+    height: 2px;
+    background-color: #000;
+}
+
+.yAxisLine {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+  left: 70px;
+  top: 0px;
 }
 
 .top-arrow, .down-arrow, .right-arrow {
@@ -872,71 +897,91 @@ input[type="range"]::-ms-track {
 }
 
 .top-arrow {
-  left: 66px;
-    top: -5px;
+  left: -4px;
+  top: -4px;
 }
 
 .down-arrow {
-  left: 66px;
-    bottom: -5px;
+  left: -4px;
+  bottom: -4px;
 }
 
 .right-arrow {
-  right: 2px;
-  top: 168px;
+  right: -4px;
+  top: -4px;
 }
 
 .x-axis-text {
   position: absolute;
-  right: -73px;
-  top: 165px;
-  width: 75px;
-  text-align: center;
-  color: #7f542a;
-  font-size: 14px;
-  font-weight: bold;
+    right: -85px;
+    top: -8px;
+    width: 75px;
+    text-align: center;
+    color: #7f542a;
+    font-size: 14px;
+    font-weight: bold;
+}
+.y-axis-text {
+  position: absolute;
+    left: -47px;
+    top: 59px;
+    width: 150px;
+    color: #447215;
+    font-size: 14px;
+    font-weight: bold;
+    
+    -webkit-transform:rotate(270deg);
+    -moz-transform:rotate(270deg);
+    -ms-transform:rotate(270deg);
+    -o-transform:rotate(270deg);
+    transform:rotate(270deg);
 }
 
 .x-axis-minlimit {
   position: absolute;
-  left: -13px;
-  top: 167px;
-  font-size: 12px;
-  width: 60px;
-  text-align: center;
+    left: -80px;
+    top: -5px;
+    font-size: 12px;
+    width: 60px;
+    text-align: center;
 }
-
-.x-axis-minlimit-hider {
-  position: absolute;
-  left: 41px;
-  top: 167px;
-  width: 28px;
-  height: 20px;
-  background-image: url(../images/crops/shape194.svg);
-}
-
 .x-axis-maxlimit {
   position: absolute;
-  right: -57px;
-  top: 185px;
-  font-size: 12px;
-  width: 60px;
-  text-align: center;
-}
-.alnr{
-  text-align: right;
-}
-.inputlabel{
-  position: absolute;
+    right: -85px;
     top: 12px;
-    right: -30px;
+    font-size: 12px;
+    width: 70px;
+    text-align: center;
+}
+.x-axis-minlimit-hider {
+  position: absolute;
+  left: -31px;
+  top: -9px;
+  width: 28px;
+  height: 20px;
+  background-image: url(../images/crops/Oscillation_graph-gradient.png);
 }
 
-.myChartBG {
+.alnr {
+  text-align: right;
+}
+
+.inputlabel {
   position: absolute;
-    width: 30px;
-    height: 338px;
-    bottom: 8px;
-    left: 43px;
-    background-image: url(../images/crops/shape194.svg);
+  top: 12px;
+  right: -30px;
+}
+
+.headerP {
+  margin-bottom: 0;
+}
+
+.firstPmb0 {
+  margin-top: 0;
+}
+.spancalculate{
+  color:#7f542a;
+  text-align: center;
+  min-width: 80px;
+  display: inline-block;
 }

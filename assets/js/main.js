@@ -139,7 +139,7 @@ $('.showObj').on('mouseover', function () {
     $(".springWeight").css('opacity', '1');
     $(".graphDisplacementVsTime").css('opacity', '1');
   }
-  if(procedCount == 5){
+  if (procedCount == 5) {
     $(".stopDiv").css('opacity', '1');
   }
 });
@@ -164,7 +164,13 @@ $('.resetDiv').on('click', function () {
   Xvalue2 = 15;
   myAmplitude = 0;
   SpringOscillationChart.clearSeriesData();
-  $(".x-axis-minlimit").text(Xvalue * 10)
+  if (Xvalue * 10 == 0) {
+    $(".x-axis-minlimit").text("00")
+  }
+  else {
+    $(".x-axis-minlimit").text(Xvalue * 10)
+  }
+
   $(".x-axis-maxlimit").text(Xvalue2 * 10)
 
   $("#sliderMass").val(0.5).css({ "background-size": "44.44% 100%" })
@@ -183,7 +189,6 @@ $('.resetDiv').on('click', function () {
   $(".stopDiv").hide();
 });
 $('.stopDiv').on('click', function () {
-
   clearInterval(springAnnimInterval);
   springAnnimInterval = 0;
   $(".resetDiv").show();
@@ -194,6 +199,11 @@ $('.stopDiv').on('click', function () {
 });
 $(".calculateDiv").on('click', function () {
   $(".calculatePopup").show();
+  $(".txtamplitude").text(myAmplitude)
+  $(".txtmass").text(myMass)
+  $(".txtspringconst").text($("#sliderSpringConstant").val())
+  var tplocal =toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),2);
+  $(".txttimeperiod").text(tplocal)
 });
 $(".popupcloseIcon").on('click', function () {
   $(".calculatePopup").hide();
@@ -242,7 +252,7 @@ $(".springWeight").draggable({
     //displacementMass = ui.position.top;
     displacementMass = (ui.position.top - weightInitialTop)
     //
-    $(".weightDispText").text(Number(toTrunc((displacementMass / 2),2)) + "" + "cm").show();
+    $(".weightDispText").text(Number(toTrunc((displacementMass / 2), 2)) + "" + "cm").show();
     //
     //Display_mc.Amp_txt.text = (displacementMass/2);
     //
@@ -265,6 +275,8 @@ $(".springWeight").draggable({
     $(".weightDispText").text("0 (cm)").hide()
     $(this).draggable('disable')
     $(".stopDiv").show();
+    //console.log(myAmplitude);
+    SpringOscillationChart.update({ x: 0, y: myAmplitude/2 * -1 })
     springAnnimInterval = setInterval(OnSpringAnnimation, 100)
   }
 });
@@ -293,7 +305,7 @@ function OnSpringAnnimation() {
   //trace("value="+cVolml_mc.m1);
   myMass = Number($("#sliderMass").val());
   myElasticity = Number($("#sliderSpringConstant").val());
-  $(".inputTimePeriod").text(((2 * Math.PI) * Math.sqrt((myMass / myElasticity))).toFixed(1));
+  $(".inputTimePeriod").text(toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),1));
   //
   //_root.TimePeriod_txt.text = Display_mc.timeperiod_txt.text;
   //
@@ -304,7 +316,6 @@ function OnSpringAnnimation() {
   myConstant = Math.sqrt(myElasticity / myMass);
   tmilli = (new Date().getTime() - myStartTime)
   t = tmilli / 1000;
-
   var tPlot = tmilli - (timeMultiple * 15000);
   if (tPlot > 15000) {
     //graph_num.num1.text = graph_num.num1+30;
@@ -325,6 +336,7 @@ function OnSpringAnnimation() {
     //trace("kavlue="+k);
   }
   //trace("Time = " + t);
+  
   var w = myConstant * t;
   var Dis = (myAmplitude * Math.cos(w)) * (Math.exp(-myDamping * t));
   //console.log("Dis" + Dis)
@@ -337,8 +349,8 @@ function OnSpringAnnimation() {
   //spring_mc._height = (massAnchor + displacementMass) - offsetY;
   $(".springWrapper").css({ "height": springOrigHeight + Dis })
   //spring_mc._height = 200+Mass_mc.block_mc._y;
-  console.log((tPlot / 1000) + ", " + Number(Dis.toFixed(2)) / 2)
-  SpringOscillationChart.update({ x: (tPlot / 1000), y: (Number(Dis.toFixed(2)) / 2)*-1 })
+  //console.log((tPlot / 1000) + ", " + Number(Dis.toFixed(2)) / 2)
+  SpringOscillationChart.update({ x: (tPlot / 1000), y: (Number(Dis.toFixed(2)) / 2) * -1 })
 
   //if (k < 300) {
   //DrawLine(position, tPlot / 50, Dis);
@@ -348,9 +360,9 @@ function OnSpringAnnimation() {
   //}
 }
 
-function toTrunc(value,n){
-  x=(value.toString()+".0").split(".");
-  return parseFloat(x[0]+"."+x[1].substr(0,n));
+function toTrunc(value, n) {
+  x = (value.toString() + ".0").split(".");
+  return parseFloat(x[0] + "." + x[1].substr(0, n));
 }
 
 

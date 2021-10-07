@@ -7,8 +7,8 @@ var SpringOscillationChart = (function () {
             chart = Highcharts.chart('myChart', {
                 chart: {
                     type: 'spline',
-                    width: 460,
-                    height:350,
+                    width: 400,
+                    height:320,
                     animation: false
 
                 },
@@ -39,11 +39,13 @@ var SpringOscillationChart = (function () {
                 yAxis: {
                     title: {
                         text: 'Displacement (cm)',
+                        enabled: false,
                         align: 'high',
                         style:{
                             color:"#447215",
                             fontSize: '14px',
-                            fontWeight: 'bold'
+                            fontWeight: 'bold',
+                            margin:-10
                         }
                     },
                     min:-70,
