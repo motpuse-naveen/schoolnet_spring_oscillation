@@ -753,7 +753,7 @@ input[type="range"]::-ms-track {
   width: 57px;
   position: absolute;
   top: 232px;
-  left: 45px;
+  left: 45px !important;
 }
 
 .weightImage {
@@ -984,4 +984,19 @@ input[type="range"]::-ms-track {
   text-align: center;
   min-width: 80px;
   display: inline-block;
+}
+
+
+body[devicetype='tablet'] .myChartBG{
+  left: 36px;
+}
+
+body[devicetype='tablet'] .myChartBGAxis{
+  left: 65px;
+}
+body[devicetype='tablet'] .xAxisLine{
+  left: 67px;
+}
+body[devicetype='tablet'] .y-axis-text{
+  left: -52px;
 }

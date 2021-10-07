@@ -41,6 +41,8 @@ function OpenWord() {
 
 $(document).ready(function () {
   InitBrowserAttribute();
+  InitOSAttribute();
+  isMobile.InitDeviceAttribute();
   showSlides(slideIndex);
   SpringOscillationChart.init([{ "x": 0, "y": 0 }]);
 });
