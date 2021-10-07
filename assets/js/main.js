@@ -201,7 +201,7 @@ $('.stopDiv').on('click', function () {
 });
 $(".calculateDiv").on('click', function () {
   $(".calculatePopup").show();
-  $(".txtamplitude").text(myAmplitude)
+  $(".txtamplitude").text(toTrunc(myAmplitude/2,2))
   $(".txtmass").text(myMass)
   $(".txtspringconst").text($("#sliderSpringConstant").val())
   var tplocal =toTrunc((2 * Math.PI) * Math.sqrt((myMass / myElasticity)),2);

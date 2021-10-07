@@ -982,7 +982,7 @@ input[type="range"]::-ms-track {
 .spancalculate{
   color:#7f542a;
   text-align: center;
-  min-width: 80px;
+  min-width: 40px;
   display: inline-block;
 }
 
