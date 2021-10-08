@@ -277,6 +277,7 @@ $(".springWeight").draggable({
   },
   start: function (event, ui) {
     //$(this).addClass('my_class');
+    //setTimeout(function(){ $(".springWeight").css({"top": "232px"})},0)
     //$(".weightDispText").text("0cm").show();
   },
   stop: function (event, ui) {
