@@ -45,6 +45,15 @@ $(document).ready(function () {
   isMobile.InitDeviceAttribute();
   showSlides(slideIndex);
   SpringOscillationChart.init([{ "x": 0, "y": 0 }]);
+  $(".calculatePopup").draggable({
+    containment: "document",
+    cursor: "move",
+    drag: function (event, ui) {
+      var scaleval = Number($("#bk6ch15ss2").attr("data-scaley"))
+      ui.position.top = ui.position.top / scaleval
+      ui.position.left = ui.position.left / scaleval
+    }
+  })
 });
 
 var procedCount = 1;
@@ -152,6 +161,9 @@ $('.showObj').on('mouseout', function () {
 });
 
 $('.resetDiv').on('click', function () {
+  ResetOscillation();
+});
+function ResetOscillation(){
   myMass = 0.5;
   myElasticity = 3;
   myConstant = 3;
@@ -189,7 +201,7 @@ $('.resetDiv').on('click', function () {
 
   $(".resetDiv").hide();
   $(".stopDiv").hide();
-});
+}
 $('.stopDiv').on('click', function () {
   clearInterval(springAnnimInterval);
   springAnnimInterval = 0;
@@ -255,7 +267,8 @@ $(".springWeight").draggable({
   drag: function (event, ui) {
     //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
     //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
-    
+    var scaleval = Number($("#bk6ch15ss2").attr("data-scaley"))
+    ui.position.top = ui.position.top / scaleval
     if (ui.position.top < Math.max(106, ui.position.top)) {
       ui.position.top = Math.max(106, ui.position.top);
       //$(".springWeight").css({"top":ui.position.top})
