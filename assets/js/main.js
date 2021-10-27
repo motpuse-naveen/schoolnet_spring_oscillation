@@ -46,12 +46,19 @@ $(document).ready(function () {
   showSlides(slideIndex);
   SpringOscillationChart.init([{ "x": 0, "y": 0 }]);
   $(".calculatePopup").draggable({
-    containment: "document",
+    containment: "parent",
     cursor: "move",
     drag: function (event, ui) {
       var scaleval = Number($("#bk6ch15ss2").attr("data-scaley"))
       ui.position.top = ui.position.top / scaleval
       ui.position.left = ui.position.left / scaleval
+      
+      if(ui.position.top>242){
+        ui.position.top = 242
+      }
+      if(ui.position.left>492){
+        ui.position.left = 492
+      }
     }
   })
 });
@@ -222,7 +229,7 @@ function StopOscillation() {
 
 var RunningOscillation = false;
 $(".calculateDiv").on('click', function () {
-  $(".calculatePopup").show();
+  $(".calculatePopup").css({"left": "490px", "top": "70px"}).show();
   if (RunningOscillation) {
     DisplayValuesInCalcPopup();
   }
