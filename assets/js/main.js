@@ -161,13 +161,28 @@ $('.showObj').on('mouseout', function () {
 });
 
 $('.resetDiv').on('click', function () {
-  ResetOscillation();
-});
-function ResetOscillation(){
   myMass = 0.5;
   myElasticity = 3;
   myConstant = 3;
   myDamping = 0;
+  ResetOscillation();
+  $("#sliderMass").val(0.5).css({ "background-size": "44.44% 100%" })
+  $(".inputMass").text(0.5);
+
+  $("#sliderSpringConstant").val(3).css({ "background-size": "50% 100%" })
+  $(".inputSpringConstant").text(3)
+
+  $("#sliderDamping").val(0).css({ "background-size": "0 100%" });
+  $(".inputDamping").text(0);
+
+  $(".inputTimePeriod").text("")
+  $(".springWeight").draggable('enable')
+
+  $(".resetDiv").hide();
+  $(".stopDiv").hide();
+});
+function ResetOscillation() {
+  StopOscillation();
   myStartTime = new Date().getTime();
   t = 0;
   k = 0;
@@ -186,31 +201,20 @@ function ResetOscillation(){
   }
 
   $(".x-axis-maxlimit").text(Xvalue2 * 10)
-
-  $("#sliderMass").val(0.5).css({ "background-size": "44.44% 100%" })
-  $(".inputMass").text(0.5);
-
-  $("#sliderSpringConstant").val(3).css({ "background-size": "50% 100%" })
-  $(".inputSpringConstant").text(3)
-
-  $("#sliderDamping").val(0).css({ "background-size": "0 100%" });
-  $(".inputDamping").text(0);
-
-  $(".inputTimePeriod").text("")
-  $(".springWeight").draggable('enable')
-
-  $(".resetDiv").hide();
-  $(".stopDiv").hide();
 }
 $('.stopDiv').on('click', function () {
-  clearInterval(springAnnimInterval);
-  springAnnimInterval = 0;
   $(".resetDiv").show();
   $(".stopDiv").hide();
+  StopOscillation();
+});
+function StopOscillation() {
+  clearInterval(springAnnimInterval);
+  springAnnimInterval = 0;
+
   $(".springWrapper").css({ "height": 200 })
   $(".springWrapper").css({ "height": 200 })
   $(".springWeight").css({ "top": 232 })
-});
+}
 $(".calculateDiv").on('click', function () {
   $(".calculatePopup").show();
   $(".txtamplitude").text(Math.abs(Number(toTrunc(myAmplitude / 2.10, 3))))
@@ -222,15 +226,27 @@ $(".calculateDiv").on('click', function () {
 $(".popupcloseIcon").on('click', function () {
   $(".calculatePopup").hide();
 })
+var springOscillationPaused = false;
 $(".springWeight").on('mousedown', function () {
   //var displacementMass = $(".springWeight").position().top - weightInitialTop
-  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px",""))
+  clearInterval(springAnnimInterval);
+  springAnnimInterval = 0;
+  springOscillationPaused = true
+  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px", ""))
   var displacementMass = weightTop - weightInitialTop
-  var lval =Math.abs(Number(toTrunc((displacementMass / 2.10), 3)))
+  var lval = Math.abs(Number(toTrunc((displacementMass / 2.10), 3)))
   $(".weightDispText").text(lval + "cm").show();
 });
 $(".springWeight").on('mouseup', function () {
   $(".weightDispText").hide();
+  //SpringOscillationChart.update({ x: 0, y: myAmplitude / 2.10 * -1 })
+  //springAnnimInterval = setInterval(OnSpringAnnimation, 100)
+  if (springOscillationPaused) {
+    SpringOscillationChart.clearSeriesData();
+    StartOscillation($(".springWeight").position().top)
+  }
+  springOscillationPaused = false;
+  
 });
 
 
@@ -267,6 +283,9 @@ $(".springWeight").draggable({
   drag: function (event, ui) {
     //console.log(ui.position.top + ", " + Math.min(112, ui.position.top))
     //console.log(ui.position.top + ", " + Math.min(352, ui.position.top))
+    springOscillationPaused = false;
+    clearInterval(springAnnimInterval);
+    springAnnimInterval = 0;
     var scaleval = Number($("#bk6ch15ss2").attr("data-scaley"))
     ui.position.top = ui.position.top / scaleval
     if (ui.position.top < Math.max(106, ui.position.top)) {
@@ -292,25 +311,33 @@ $(".springWeight").draggable({
     //$(this).addClass('my_class');
     //setTimeout(function(){ $(".springWeight").css({"top": "232px"})},0)
     //$(".weightDispText").text("0cm").show();
+    //StopOscillation();
+    //ResetOscillation();
   },
   stop: function (event, ui) {
-    //$(this).removeClass('my_class');
-    Xvalue = 0;
-    Xvalue2 = 15;
-    myAmplitude = (ui.position.top - weightInitialTop);
-    //myStartTime = getTimer();
-    myStartTime = new Date().getTime();
-    timeMultiple = 0;
-
-    //NM: hide drag label
-    $(".weightDispText").text("0cm").hide()
-    $(this).draggable('disable')
-    $(".stopDiv").show();
-    //console.log(myAmplitude);
-    SpringOscillationChart.update({ x: 0, y: myAmplitude / 2.10 * -1 })
-    springAnnimInterval = setInterval(OnSpringAnnimation, 100)
+    SpringOscillationChart.clearSeriesData();
+    StartOscillation(ui.position.top)
   }
 });
+
+function StartOscillation(weightTopPos) {
+  springOscillationPaused = false;
+  //$(this).removeClass('my_class');
+  Xvalue = 0;
+  Xvalue2 = 15;
+  myAmplitude = (weightTopPos - weightInitialTop);
+  //myStartTime = getTimer();
+  myStartTime = new Date().getTime();
+  timeMultiple = 0;
+
+  //NM: hide drag label
+  $(".weightDispText").text("0cm").hide()
+  //$(this).draggable('disable')
+  $(".stopDiv").show();
+  //console.log(myAmplitude);
+  SpringOscillationChart.update({ x: 0, y: myAmplitude / 2.10 * -1 })
+  springAnnimInterval = setInterval(OnSpringAnnimation, 100)
+}
 
 
 var myMass = 0.5;
@@ -344,7 +371,7 @@ function OnSpringAnnimation() {
   myDamping = Number($("#sliderDamping").val());
   //position = Mass_mc.block_mc._y;
   //var position = $(".springWeight").position().top - weightInitialTop
-  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px",""))
+  var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px", ""))
   var position = weightTop - weightInitialTop
   myConstant = Math.sqrt(myElasticity / myMass);
   tmilli = (new Date().getTime() - myStartTime)
