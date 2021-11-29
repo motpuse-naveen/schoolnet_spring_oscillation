@@ -365,7 +365,13 @@ function StartOscillation(weightTopPos) {
   //myStartTime = getTimer();
   myStartTime = new Date().getTime();
   timeMultiple = 0;
-
+  if (Xvalue * 10 == 0) {
+    $(".x-axis-minlimit").text("00")
+  }
+  else {
+    $(".x-axis-minlimit").text(Xvalue * 10)
+  }
+  $(".x-axis-maxlimit").text(Xvalue2 * 10)
   //NM: hide drag label
   $(".weightDispText").text("0cm").hide()
   //$(this).draggable('disable')
