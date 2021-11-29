@@ -52,11 +52,11 @@ $(document).ready(function () {
       var scaleval = Number($("#bk6ch15ss2").attr("data-scaley"))
       ui.position.top = ui.position.top / scaleval
       ui.position.left = ui.position.left / scaleval
-      
-      if(ui.position.top>242){
+
+      if (ui.position.top > 242) {
         ui.position.top = 242
       }
-      if(ui.position.left>492){
+      if (ui.position.left > 492) {
         ui.position.left = 492
       }
     }
@@ -202,6 +202,7 @@ function ResetOscillation() {
   Xvalue = 0;
   Xvalue2 = 15;
   myAmplitude = 0;
+  pausedMillSec = 0;
   SpringOscillationChart.clearSeriesData();
   if (Xvalue * 10 == 0) {
     $(".x-axis-minlimit").text("00")
@@ -229,7 +230,7 @@ function StopOscillation() {
 
 var RunningOscillation = false;
 $(".calculateDiv").on('click', function () {
-  $(".calculatePopup").css({"left": "490px", "top": "70px"}).show();
+  $(".calculatePopup").css({ "left": "490px", "top": "70px" }).show();
   if (RunningOscillation) {
     DisplayValuesInCalcPopup();
   }
@@ -292,9 +293,9 @@ function handleInputChange(e) {
   const max = target.max
   const val = target.value
   const name = target.name
-  if (name == "mass") {myMass = val; $(".inputMass").text(val);}
-  if (name == "springconstant") {myElasticity = val; $(".inputSpringConstant").text(val);}
-  if (name == "damping"){myDamping = val; $(".inputDamping").text(val);}
+  if (name == "mass") { myMass = val; $(".inputMass").text(val); }
+  if (name == "springconstant") { myElasticity = val; $(".inputSpringConstant").text(val); }
+  if (name == "damping") { myDamping = val; $(".inputDamping").text(val); }
 
   target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
   if (RunningOscillation) {
@@ -365,6 +366,7 @@ function StartOscillation(weightTopPos) {
   //myStartTime = getTimer();
   myStartTime = new Date().getTime();
   timeMultiple = 0;
+  pausedMillSec = 0;
   if (Xvalue * 10 == 0) {
     $(".x-axis-minlimit").text("00")
   }
@@ -416,7 +418,7 @@ function OnSpringAnnimation() {
   var weightTop = Number(document.getElementById('springWeightDiv').style.top.replace("px", ""))
   var position = weightTop - weightInitialTop
   myConstant = Math.sqrt(myElasticity / myMass);
-  tmilli = (new Date().getTime() - myStartTime)
+  tmilli = (new Date().getTime() - myStartTime) - pausedMillSec;
   t = tmilli / 1000;
   var tPlot = tmilli - (timeMultiple * 15000);
   if (tPlot > 15000) {
@@ -467,5 +469,27 @@ function toTrunc(value, n) {
   return parseFloat(x[0] + "." + x[1].substr(0, n));
 }
 
+var tabSwitched = false;
+var pausedMillSec = 0;
+var pausedStartDate;
+
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    if (!tabSwitched) {
+      if (springAnnimInterval > 0) {
+        clearInterval(springAnnimInterval)
+        tabSwitched = true;
+        pausedStartDate = new Date().getTime();
+      }
+    }
+  }
+  else {
+    if (tabSwitched) {
+      springAnnimInterval = setInterval(OnSpringAnnimation, 100);
+      tabSwitched = false;
+      pausedMillSec += (new Date().getTime() - pausedStartDate)
+    }
+  }
+});
 
 
