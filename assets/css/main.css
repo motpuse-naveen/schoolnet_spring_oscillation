@@ -865,7 +865,7 @@ input[type="range"]::-ms-track {
     width: 30px;
     height: 310px;
     bottom: 8px;
-    left: 41px;
+    left: 42px;
 }
 
 .myChartBGAxis {
@@ -873,7 +873,7 @@ input[type="range"]::-ms-track {
     width: 2px;
     height: 321px;
     bottom: 2px;
-    left: 70px;
+    left: 72px;
     background-color: #000000;
 }
 
