@@ -948,6 +948,7 @@ input[type="range"]::-ms-track {
     font-size: 12px;
     width: 60px;
     text-align: center;
+    font-weight: bold;
 }
 .x-axis-maxlimit {
   position: absolute;
@@ -956,6 +957,7 @@ input[type="range"]::-ms-track {
     font-size: 12px;
     width: 70px;
     text-align: center;
+    font-weight: bold;
 }
 .x-axis-minlimit-hider {
   position: absolute;
@@ -988,6 +990,17 @@ input[type="range"]::-ms-track {
   text-align: center;
   min-width: 50px;
   display: inline-block;
+}
+
+.highcharts-axis-labels.highcharts-yaxis-labels text{
+  color: #000000 !important;
+  fill: #000000 !important;
+  font-weight: bold;
+}
+.highcharts-axis-labels.highcharts-xaxis-labels text{
+  color: #000000 !important;
+  fill: #000000 !important;
+  font-weight: bold;
 }
 
 

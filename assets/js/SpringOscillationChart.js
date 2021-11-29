@@ -32,7 +32,8 @@ var SpringOscillationChart = (function () {
                     gridLineWidth: 1,
                     lineWidth: 0,
                     minorTickLength: 0,
-                    tickLength: 0
+                    tickLength: 0,
+                    gridLineColor: '#ACBCC4'
                 },
                 title: false,
                 subtitle: false,
@@ -58,7 +59,8 @@ var SpringOscillationChart = (function () {
                     minorGridLineWidth: 0,
                     minorTickInterval: 10,
                     minorTickLength: 10,
-                    minorTickWidth: 1
+                    minorTickWidth: 1,
+                    gridLineColor: '#ACBCC4'
                 },
                 legend: {
                     enabled: false
